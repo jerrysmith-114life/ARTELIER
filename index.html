@@ -99,7 +99,6 @@
     
     .mobile-nav {
       position: fixed;
-      height: 100vh;
       top: 0;
       left: 0;
       right: 0;
@@ -719,10 +718,10 @@
     }
     
     .modal-handle {
-      width: 90%;
-      height: 10px;
+      width: 40px;
+      height: 4px;
       background: #ddd;
-      border-radius: 20px;
+      border-radius: 2px;
       margin: 1rem auto 0.5rem;
       cursor: grab;
     }
@@ -951,7 +950,7 @@
       }
     }
   </style>
-  <style>@view-transition { navigation: auto; }</style>
+  <!-- <style>@view-transition { navigation: auto; }</style> -->
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full">
@@ -982,7 +981,7 @@
     <div class="grid-2" style="margin-bottom: 4rem;">
      <div class="collection-card" data-category="mens-tailored">
       <div class="collection-image">
-       <i class="fas fa-user-tie" style="font-size: 5rem;"></i>
+       <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&amp;q=80" alt="Tailored Essentials" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-user-tie\' style=\'font-size: 5rem;\'></i>';">
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Tailored Essentials</h3>
@@ -991,7 +990,7 @@
      </div>
      <div class="collection-card" data-category="mens-outerwear">
       <div class="collection-image">
-       <i class="fas fa-vest" style="font-size: 5rem;"></i>
+       <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&amp;q=80" alt="Outerwear" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-vest\' style=\'font-size: 5rem;\'></i>';">
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Outerwear</h3>
@@ -1002,7 +1001,7 @@
     <div class="grid-2">
      <div class="collection-card" data-category="mens-denim">
       <div class="collection-image">
-       <i class="fas fa-jeans" style="font-size: 5rem;"></i>
+       <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&amp;q=80" alt="Denim &amp; Casual" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-jeans\' style=\'font-size: 5rem;\'></i>';">
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Denim &amp; Casual</h3>
@@ -1011,7 +1010,7 @@
      </div>
      <div class="collection-card" data-category="mens-footwear">
       <div class="collection-image">
-       <i class="fas fa-shoe-prints" style="font-size: 5rem;"></i>
+       <img src="https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=800&amp;q=80" alt="Footwear" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-shoe-prints\' style=\'font-size: 5rem;\'></i>';">
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Footwear</h3>
@@ -1025,7 +1024,7 @@
     <div class="grid-2" style="margin-bottom: 4rem;">
      <div class="collection-card" data-category="womens-dresses">
       <div class="collection-image">
-       <i class="fas fa-female" style="font-size: 5rem;"></i>
+       <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=800&amp;q=80" alt="Modern Silhouettes" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-female\' style=\'font-size: 5rem;\'></i>';">
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Modern Silhouettes</h3>
@@ -1034,7 +1033,7 @@
      </div>
      <div class="collection-card" data-category="womens-knitwear">
       <div class="collection-image">
-       <i class="fas fa-mitten" style="font-size: 5rem;"></i>
+       <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&amp;q=80" alt="Knitwear" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-mitten\' style=\'font-size: 5rem;\'></i>';">
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Knitwear</h3>
@@ -1045,7 +1044,7 @@
     <div class="grid-2">
      <div class="collection-card" data-category="womens-blouses">
       <div class="collection-image">
-       <i class="fas fa-tshirt" style="font-size: 5rem;"></i>
+       <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&amp;q=80" alt="Blouses &amp; Shirts" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-tshirt\' style=\'font-size: 5rem;\'></i>';">
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Blouses &amp; Shirts</h3>
@@ -1054,7 +1053,7 @@
      </div>
      <div class="collection-card" data-category="womens-accessories">
       <div class="collection-image">
-       <i class="fas fa-gem" style="font-size: 5rem;"></i>
+       <img src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=800&amp;q=80" alt="Accessories" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-gem\' style=\'font-size: 5rem;\'></i>';">
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Accessories</h3>
@@ -1069,32 +1068,32 @@
     <div class="grid-3">
      <div class="lookbook-item">
       <div class="lookbook-image">
-       <i class="fas fa-briefcase" style="font-size: 4rem; color: #333;"></i>
+       <img src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=600&amp;q=80" alt="Lookbook Style 1" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-briefcase\' style=\'font-size: 4rem; color: #333;\'></i>';">
       </div>
      </div>
      <div class="lookbook-item">
       <div class="lookbook-image">
-       <i class="fas fa-hat-cowboy" style="font-size: 4rem; color: #666;"></i>
+       <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&amp;q=80" alt="Lookbook Style 2" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-hat-cowboy\' style=\'font-size: 4rem; color: #666;\'></i>';">
       </div>
      </div>
      <div class="lookbook-item">
       <div class="lookbook-image">
-       <i class="fas fa-glasses" style="font-size: 4rem; color: #444;"></i>
+       <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=600&amp;q=80" alt="Lookbook Style 3" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-glasses\' style=\'font-size: 4rem; color: #444;\'></i>';">
       </div>
      </div>
      <div class="lookbook-item">
       <div class="lookbook-image">
-       <i class="fas fa-crown" style="font-size: 4rem; color: #555;"></i>
+       <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&amp;q=80" alt="Lookbook Style 4" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-crown\' style=\'font-size: 4rem; color: #555;\'></i>';">
       </div>
      </div>
      <div class="lookbook-item">
       <div class="lookbook-image">
-       <i class="fas fa-ring" style="font-size: 4rem; color: #777;"></i>
+       <img src="https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?w=600&amp;q=80" alt="Lookbook Style 5" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-ring\' style=\'font-size: 4rem; color: #777;\'></i>';">
       </div>
      </div>
      <div class="lookbook-item">
       <div class="lookbook-image">
-       <i class="fas fa-watch" style="font-size: 4rem; color: #333;"></i>
+       <img src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=600&amp;q=80" alt="Lookbook Style 6" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-watch\' style=\'font-size: 4rem; color: #333;\'></i>';">
       </div>
      </div>
     </div>
@@ -1104,10 +1103,10 @@
     <p style="text-align: center; max-width: 600px; margin: -2rem auto 4rem; font-size: 1rem; color: #666; font-weight: 300; line-height: 1.6;">Handpicked pieces that define our aesthetic. Investment-worthy designs created to become wardrobe cornerstones.</p>
     <div class="grid-4">
      <div class="product-card" data-product-id="1" style="cursor: pointer;">
-      <div class="product-image">
+      <div class="product-image"><img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&amp;q=80" alt="Cashmere Overcoat" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-vest\' style=\'font-size: 4rem;\'></i><div class=\'product-badge\'>New</div>';">
        <div class="product-badge">
         New
-       </div><i class="fas fa-vest" style="font-size: 4rem;"></i>
+       </div>
       </div>
       <div class="product-info">
        <h3 class="product-name">Cashmere Overcoat</h3>
@@ -1116,10 +1115,10 @@
       </div>
      </div>
      <div class="product-card" data-product-id="2" style="cursor: pointer;">
-      <div class="product-image">
+      <div class="product-image"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&amp;q=80" alt="Italian Wool Suit" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-user-tie\' style=\'font-size: 4rem;\'></i><div class=\'product-badge\'>Bestseller</div>';">
        <div class="product-badge">
         Bestseller
-       </div><i class="fas fa-user-tie" style="font-size: 4rem;"></i>
+       </div>
       </div>
       <div class="product-info">
        <h3 class="product-name">Italian Wool Suit</h3>
@@ -1128,7 +1127,7 @@
       </div>
      </div>
      <div class="product-card" data-product-id="3" style="cursor: pointer;">
-      <div class="product-image"><i class="fas fa-female" style="font-size: 4rem;"></i>
+      <div class="product-image"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&amp;q=80" alt="Silk Midi Dress" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-female\' style=\'font-size: 4rem;\'></i>';">
       </div>
       <div class="product-info">
        <h3 class="product-name">Silk Midi Dress</h3>
@@ -1137,10 +1136,10 @@
       </div>
      </div>
      <div class="product-card" data-product-id="4" style="cursor: pointer;">
-      <div class="product-image">
+      <div class="product-image"><img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&amp;q=80" alt="Merino Turtleneck" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-mitten\' style=\'font-size: 4rem;\'></i><div class=\'product-badge\'>Limited</div>';">
        <div class="product-badge">
         Limited
-       </div><i class="fas fa-mitten" style="font-size: 4rem;"></i>
+       </div>
       </div>
       <div class="product-info">
        <h3 class="product-name">Merino Turtleneck</h3>
@@ -1149,7 +1148,7 @@
       </div>
      </div>
      <div class="product-card" data-product-id="5" style="cursor: pointer;">
-      <div class="product-image"><i class="fas fa-jeans" style="font-size: 4rem;"></i>
+      <div class="product-image"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&amp;q=80" alt="Selvedge Denim" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-jeans\' style=\'font-size: 4rem;\'></i>';">
       </div>
       <div class="product-info">
        <h3 class="product-name">Selvedge Denim</h3>
@@ -1158,10 +1157,10 @@
       </div>
      </div>
      <div class="product-card" data-product-id="6" style="cursor: pointer;">
-      <div class="product-image">
+      <div class="product-image"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&amp;q=80" alt="Organic Cotton Shirt" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-tshirt\' style=\'font-size: 4rem;\'></i><div class=\'product-badge\'>New</div>';">
        <div class="product-badge">
         New
-       </div><i class="fas fa-tshirt" style="font-size: 4rem;"></i>
+       </div>
       </div>
       <div class="product-info">
        <h3 class="product-name">Organic Cotton Shirt</h3>
@@ -1170,7 +1169,7 @@
       </div>
      </div>
      <div class="product-card" data-product-id="7" style="cursor: pointer;">
-      <div class="product-image"><i class="fas fa-shoe-prints" style="font-size: 4rem;"></i>
+      <div class="product-image"><img src="https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=600&amp;q=80" alt="Leather Derby" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-shoe-prints\' style=\'font-size: 4rem;\'></i>';">
       </div>
       <div class="product-info">
        <h3 class="product-name">Leather Derby</h3>
@@ -1179,10 +1178,10 @@
       </div>
      </div>
      <div class="product-card" data-product-id="8" style="cursor: pointer;">
-      <div class="product-image">
+      <div class="product-image"><img src="https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=600&amp;q=80" alt="Minimal Tote" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-shopping-bag\' style=\'font-size: 4rem;\'></i><div class=\'product-badge\'>Bestseller</div>';">
        <div class="product-badge">
         Bestseller
-       </div><i class="fas fa-shopping-bag" style="font-size: 4rem;"></i>
+       </div>
       </div>
       <div class="product-info">
        <h3 class="product-name">Minimal Tote</h3>
@@ -1286,14 +1285,14 @@
     
     // Product data
     const products = {
-      1: { name: "Cashmere Overcoat", category: "Outerwear", price: 1245, icon: "fas fa-vest", stock: 15, material: "100% Cashmere", sku: "ATL-OUT-001", description: "Luxuriously soft cashmere overcoat with a timeless silhouette. Fully lined with Italian cupro, featuring horn buttons and hand-finished details." },
-      2: { name: "Italian Wool Suit", category: "Tailoring", price: 1890, icon: "fas fa-user-tie", stock: 8, material: "Italian Wool", sku: "ATL-SUT-002", description: "Impeccably tailored two-piece suit crafted from Super 120s Italian wool. Features natural shoulder construction and functional buttonholes." },
-      3: { name: "Silk Midi Dress", category: "Dresses", price: 685, icon: "fas fa-female", stock: 12, material: "Pure Silk", sku: "ATL-DRS-003", description: "Elegant midi dress in flowing silk charmeuse. Features a cowl neckline and bias-cut construction for a flattering drape." },
-      4: { name: "Merino Turtleneck", category: "Knitwear", price: 395, icon: "fas fa-mitten", stock: 5, material: "Merino Wool", sku: "ATL-KNT-004", description: "Classic turtleneck sweater in fine-gauge merino wool. Lightweight yet warm with a refined finish. Limited edition colorway." },
-      5: { name: "Selvedge Denim", category: "Denim", price: 285, icon: "fas fa-jeans", stock: 20, material: "Japanese Selvedge", sku: "ATL-DEN-005", description: "Premium selvedge denim from a renowned Japanese mill. Unwashed raw denim that ages beautifully with wear." },
-      6: { name: "Organic Cotton Shirt", category: "Shirts", price: 225, icon: "fas fa-tshirt", stock: 18, material: "Organic Cotton", sku: "ATL-SHT-006", description: "Crisp button-down shirt in certified organic cotton poplin. Mother-of-pearl buttons and French seam construction." },
-      7: { name: "Leather Derby", category: "Footwear", price: 495, icon: "fas fa-shoe-prints", stock: 10, material: "Italian Leather", sku: "ATL-FOT-007", description: "Hand-finished derby shoes in vegetable-tanned Italian leather. Goodyear welted with leather soles for durability." },
-      8: { name: "Minimal Tote", category: "Accessories", price: 575, icon: "fas fa-shopping-bag", stock: 14, material: "Full-Grain Leather", sku: "ATL-ACC-008", description: "Spacious tote bag in full-grain leather. Unlined interior with internal pocket. Develops rich patina over time." }
+      1: { name: "Cashmere Overcoat", category: "Outerwear", price: 1245, icon: "fas fa-vest", image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=800&q=80", stock: 15, material: "100% Cashmere", sku: "ATL-OUT-001", description: "Luxuriously soft cashmere overcoat with a timeless silhouette. Fully lined with Italian cupro, featuring horn buttons and hand-finished details." },
+      2: { name: "Italian Wool Suit", category: "Tailoring", price: 1890, icon: "fas fa-user-tie", image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80", stock: 8, material: "Italian Wool", sku: "ATL-SUT-002", description: "Impeccably tailored two-piece suit crafted from Super 120s Italian wool. Features natural shoulder construction and functional buttonholes." },
+      3: { name: "Silk Midi Dress", category: "Dresses", price: 685, icon: "fas fa-female", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=80", stock: 12, material: "Pure Silk", sku: "ATL-DRS-003", description: "Elegant midi dress in flowing silk charmeuse. Features a cowl neckline and bias-cut construction for a flattering drape." },
+      4: { name: "Merino Turtleneck", category: "Knitwear", price: 395, icon: "fas fa-mitten", image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&q=80", stock: 5, material: "Merino Wool", sku: "ATL-KNT-004", description: "Classic turtleneck sweater in fine-gauge merino wool. Lightweight yet warm with a refined finish. Limited edition colorway." },
+      5: { name: "Selvedge Denim", category: "Denim", price: 285, icon: "fas fa-jeans", image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=800&q=80", stock: 20, material: "Japanese Selvedge", sku: "ATL-DEN-005", description: "Premium selvedge denim from a renowned Japanese mill. Unwashed raw denim that ages beautifully with wear." },
+      6: { name: "Organic Cotton Shirt", category: "Shirts", price: 225, icon: "fas fa-tshirt", image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800&q=80", stock: 18, material: "Organic Cotton", sku: "ATL-SHT-006", description: "Crisp button-down shirt in certified organic cotton poplin. Mother-of-pearl buttons and French seam construction." },
+      7: { name: "Leather Derby", category: "Footwear", price: 495, icon: "fas fa-shoe-prints", image: "https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=800&q=80", stock: 10, material: "Italian Leather", sku: "ATL-FOT-007", description: "Hand-finished derby shoes in vegetable-tanned Italian leather. Goodyear welted with leather soles for durability." },
+      8: { name: "Minimal Tote", category: "Accessories", price: 575, icon: "fas fa-shopping-bag", image: "https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=800&q=80", stock: 14, material: "Full-Grain Leather", sku: "ATL-ACC-008", description: "Spacious tote bag in full-grain leather. Unlined interior with internal pocket. Develops rich patina over time." }
     };
     
     // Cart management
@@ -1361,52 +1360,52 @@
     // Collection data for modal display
     const collections = {
       'mens-tailored': [
-        { name: 'Charcoal Wool Suit', price: 1890, icon: 'fas fa-user-tie', category: 'Tailored Essentials' },
-        { name: 'Navy Blazer', price: 945, icon: 'fas fa-vest', category: 'Tailored Essentials' },
-        { name: 'Oxford Dress Shirt', price: 185, icon: 'fas fa-tshirt', category: 'Tailored Essentials' },
-        { name: 'Silk Tie Collection', price: 125, icon: 'fas fa-ribbon', category: 'Tailored Essentials' }
+        { name: 'Charcoal Wool Suit', price: 1890, icon: 'fas fa-user-tie', image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80', category: 'Tailored Essentials' },
+        { name: 'Navy Blazer', price: 945, icon: 'fas fa-vest', image: 'https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=600&q=80', category: 'Tailored Essentials' },
+        { name: 'Oxford Dress Shirt', price: 185, icon: 'fas fa-tshirt', image: 'https://images.unsplash.com/photo-1603252109303-2751441dd157?w=600&q=80', category: 'Tailored Essentials' },
+        { name: 'Silk Tie Collection', price: 125, icon: 'fas fa-ribbon', image: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&q=80', category: 'Tailored Essentials' }
       ],
       'mens-outerwear': [
-        { name: 'Cashmere Overcoat', price: 1245, icon: 'fas fa-vest', category: 'Outerwear' },
-        { name: 'Wool Peacoat', price: 795, icon: 'fas fa-vest-patches', category: 'Outerwear' },
-        { name: 'Technical Rain Jacket', price: 485, icon: 'fas fa-wind', category: 'Outerwear' },
-        { name: 'Quilted Bomber', price: 625, icon: 'fas fa-layer-group', category: 'Outerwear' }
+        { name: 'Cashmere Overcoat', price: 1245, icon: 'fas fa-vest', image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&q=80', category: 'Outerwear' },
+        { name: 'Wool Peacoat', price: 795, icon: 'fas fa-vest-patches', image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&q=80', category: 'Outerwear' },
+        { name: 'Technical Rain Jacket', price: 485, icon: 'fas fa-wind', image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80', category: 'Outerwear' },
+        { name: 'Quilted Bomber', price: 625, icon: 'fas fa-layer-group', image: 'https://images.unsplash.com/photo-1606638825463-7f6f36266de9?w=600&q=80', category: 'Outerwear' }
       ],
       'mens-denim': [
-        { name: 'Selvedge Denim', price: 285, icon: 'fas fa-jeans', category: 'Denim & Casual' },
-        { name: 'Raw Denim Jacket', price: 345, icon: 'fas fa-vest', category: 'Denim & Casual' },
-        { name: 'Slim Fit Chinos', price: 195, icon: 'fas fa-socks', category: 'Denim & Casual' },
-        { name: 'Organic Cotton Tee', price: 85, icon: 'fas fa-tshirt', category: 'Denim & Casual' }
+        { name: 'Selvedge Denim', price: 285, icon: 'fas fa-jeans', image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=80', category: 'Denim & Casual' },
+        { name: 'Raw Denim Jacket', price: 345, icon: 'fas fa-vest', image: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=600&q=80', category: 'Denim & Casual' },
+        { name: 'Slim Fit Chinos', price: 195, icon: 'fas fa-socks', image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&q=80', category: 'Denim & Casual' },
+        { name: 'Organic Cotton Tee', price: 85, icon: 'fas fa-tshirt', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80', category: 'Denim & Casual' }
       ],
       'mens-footwear': [
-        { name: 'Leather Derby', price: 495, icon: 'fas fa-shoe-prints', category: 'Footwear' },
-        { name: 'Chelsea Boots', price: 575, icon: 'fas fa-hiking', category: 'Footwear' },
-        { name: 'Minimal Sneakers', price: 325, icon: 'fas fa-running', category: 'Footwear' },
-        { name: 'Loafers', price: 445, icon: 'fas fa-shoe-prints', category: 'Footwear' }
+        { name: 'Leather Derby', price: 495, icon: 'fas fa-shoe-prints', image: 'https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=600&q=80', category: 'Footwear' },
+        { name: 'Chelsea Boots', price: 575, icon: 'fas fa-hiking', image: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=600&q=80', category: 'Footwear' },
+        { name: 'Minimal Sneakers', price: 325, icon: 'fas fa-running', image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600&q=80', category: 'Footwear' },
+        { name: 'Loafers', price: 445, icon: 'fas fa-shoe-prints', image: 'https://images.unsplash.com/photo-1582897085656-c636d006a246?w=600&q=80', category: 'Footwear' }
       ],
       'womens-dresses': [
-        { name: 'Silk Midi Dress', price: 685, icon: 'fas fa-female', category: 'Modern Silhouettes' },
-        { name: 'Linen Shirt Dress', price: 395, icon: 'fas fa-person-dress', category: 'Modern Silhouettes' },
-        { name: 'Wool Pencil Skirt', price: 285, icon: 'fas fa-vest', category: 'Modern Silhouettes' },
-        { name: 'Structured Blazer Dress', price: 745, icon: 'fas fa-user-tie', category: 'Modern Silhouettes' }
+        { name: 'Silk Midi Dress', price: 685, icon: 'fas fa-female', image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80', category: 'Modern Silhouettes' },
+        { name: 'Linen Shirt Dress', price: 395, icon: 'fas fa-person-dress', image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80', category: 'Modern Silhouettes' },
+        { name: 'Wool Pencil Skirt', price: 285, icon: 'fas fa-vest', image: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600&q=80', category: 'Modern Silhouettes' },
+        { name: 'Structured Blazer Dress', price: 745, icon: 'fas fa-user-tie', image: 'https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=600&q=80', category: 'Modern Silhouettes' }
       ],
       'womens-knitwear': [
-        { name: 'Merino Turtleneck', price: 395, icon: 'fas fa-mitten', category: 'Knitwear' },
-        { name: 'Cashmere Cardigan', price: 645, icon: 'fas fa-vest', category: 'Knitwear' },
-        { name: 'Ribbed Knit Sweater', price: 325, icon: 'fas fa-tshirt', category: 'Knitwear' },
-        { name: 'Cable Knit Pullover', price: 425, icon: 'fas fa-mitten', category: 'Knitwear' }
+        { name: 'Merino Turtleneck', price: 395, icon: 'fas fa-mitten', image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80', category: 'Knitwear' },
+        { name: 'Cashmere Cardigan', price: 645, icon: 'fas fa-vest', image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80', category: 'Knitwear' },
+        { name: 'Ribbed Knit Sweater', price: 325, icon: 'fas fa-tshirt', image: 'https://images.unsplash.com/photo-1612423284934-2850a4ea6b0f?w=600&q=80', category: 'Knitwear' },
+        { name: 'Cable Knit Pullover', price: 425, icon: 'fas fa-mitten', image: 'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=600&q=80', category: 'Knitwear' }
       ],
       'womens-blouses': [
-        { name: 'Organic Cotton Shirt', price: 225, icon: 'fas fa-tshirt', category: 'Blouses & Shirts' },
-        { name: 'Silk Blouse', price: 385, icon: 'fas fa-shirt', category: 'Blouses & Shirts' },
-        { name: 'Linen Button-Up', price: 195, icon: 'fas fa-tshirt', category: 'Blouses & Shirts' },
-        { name: 'Pleated Collar Shirt', price: 275, icon: 'fas fa-shirt', category: 'Blouses & Shirts' }
+        { name: 'Organic Cotton Shirt', price: 225, icon: 'fas fa-tshirt', image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80', category: 'Blouses & Shirts' },
+        { name: 'Silk Blouse', price: 385, icon: 'fas fa-shirt', image: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=600&q=80', category: 'Blouses & Shirts' },
+        { name: 'Linen Button-Up', price: 195, icon: 'fas fa-tshirt', image: 'https://images.unsplash.com/photo-1578932750294-f5075e85f44a?w=600&q=80', category: 'Blouses & Shirts' },
+        { name: 'Pleated Collar Shirt', price: 275, icon: 'fas fa-shirt', image: 'https://images.unsplash.com/photo-1624206112918-f140f087f9b5?w=600&q=80', category: 'Blouses & Shirts' }
       ],
       'womens-accessories': [
-        { name: 'Minimal Tote', price: 575, icon: 'fas fa-shopping-bag', category: 'Accessories' },
-        { name: 'Silk Scarf', price: 145, icon: 'fas fa-ribbon', category: 'Accessories' },
-        { name: 'Leather Belt', price: 195, icon: 'fas fa-grip-lines', category: 'Accessories' },
-        { name: 'Gold-Plated Necklace', price: 285, icon: 'fas fa-gem', category: 'Accessories' }
+        { name: 'Minimal Tote', price: 575, icon: 'fas fa-shopping-bag', image: 'https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=600&q=80', category: 'Accessories' },
+        { name: 'Silk Scarf', price: 145, icon: 'fas fa-ribbon', image: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=600&q=80', category: 'Accessories' },
+        { name: 'Leather Belt', price: 195, icon: 'fas fa-grip-lines', image: 'https://images.unsplash.com/photo-1624222247344-550fb60583dd?w=600&q=80', category: 'Accessories' },
+        { name: 'Gold-Plated Necklace', price: 285, icon: 'fas fa-gem', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80', category: 'Accessories' }
       ]
     };
     
@@ -1453,8 +1452,8 @@
       collectionItems.forEach((item, index) => {
         collectionHTML += `
           <div style="display: flex; gap: 1rem; padding: 1rem; background: #f9f9f9; border-radius: 8px; align-items: center; cursor: pointer; transition: all 0.2s ease;" class="collection-modal-item" data-collection-item="${index}" data-category="${category}">
-            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <i class="${item.icon}" style="font-size: 2rem;"></i>
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden;">
+              ${item.image ? `<img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'${item.icon}\\' style=\\'font-size: 2rem;\\'></i>';">` : `<i class="${item.icon}" style="font-size: 2rem;"></i>`}
             </div>
             <div style="flex: 1;">
               <div style="font-weight: 500; font-size: 1rem; margin-bottom: 0.25rem;">${item.name}</div>
@@ -1510,6 +1509,10 @@
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     };
     
+    window.goBackToCollection = function(category) {
+      openCollectionModal(category);
+    };
+    
     function openProductModal(productId) {
       selectedProduct = products[productId];
       currentQuantity = 1;
@@ -1517,7 +1520,9 @@
       const modalContent = document.querySelector('.product-modal .modal-content');
       
       modalContent.innerHTML = `
-        <div class="modal-product-image" id="modalProductImage"><i class="${selectedProduct.icon}" style="font-size: 5rem;"></i></div>
+        <div class="modal-product-image" id="modalProductImage">
+          ${selectedProduct.image ? `<img src="${selectedProduct.image}" alt="${selectedProduct.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'${selectedProduct.icon}\\' style=\\'font-size: 5rem;\\'></i>';">` : `<i class="${selectedProduct.icon}" style="font-size: 5rem;"></i>`}
+        </div>
         <h2 class="modal-product-name" id="modalProductName">${selectedProduct.name}</h2>
         <p class="modal-product-category" id="modalProductCategory">${selectedProduct.category}</p>
         <p class="modal-product-price" id="modalProductPrice">$${selectedProduct.price.toLocaleString()}</p>
@@ -1627,7 +1632,9 @@
       const modalContent = document.querySelector('.product-modal .modal-content');
       
       modalContent.innerHTML = `
-        <div class="modal-product-image" id="modalProductImage"><i class="${selectedProduct.icon}" style="font-size: 5rem;"></i></div>
+        <div class="modal-product-image" id="modalProductImage">
+          ${selectedProduct.image ? `<img src="${selectedProduct.image}" alt="${selectedProduct.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'${selectedProduct.icon}\\' style=\\'font-size: 5rem;\\'></i>';">` : `<i class="${selectedProduct.icon}" style="font-size: 5rem;"></i>`}
+        </div>
         <h2 class="modal-product-name" id="modalProductName">${selectedProduct.name}</h2>
         <p class="modal-product-category" id="modalProductCategory">${selectedProduct.category}</p>
         <p class="modal-product-price" id="modalProductPrice">$${selectedProduct.price.toLocaleString()}</p>
@@ -1701,518 +1708,3 @@
           
           setTimeout(() => {
             btn.textContent = originalText;
-            btn.style.background = '';
-            btn.style.borderColor = '';
-            btn.style.color = '';
-          }, 1500);
-        }
-      });
-      
-      document.getElementById('orderNowBtn').addEventListener('click', () => {
-        if (selectedProduct && selectedProduct.stock > 0) {
-          const message = `Hi! I'd like to order:\n\n${selectedProduct.name}\nQuantity: ${currentQuantity}\nTotal: $${(selectedProduct.price * currentQuantity).toLocaleString()}\n\nPlease let me know the next steps.`;
-          const whatsappUrl = `https://wa.me/${defaultConfig.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
-          window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-        }
-      });
-      
-      productModalOverlay.classList.add('active');
-      productModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeProductModal() {
-      productModalOverlay.classList.remove('active');
-      productModal.classList.remove('active');
-      if (!cartModal.classList.contains('active')) {
-        document.body.style.overflow = '';
-      }
-    }
-    
-    productModalOverlay.addEventListener('click', (e) => {
-      if (e.target === productModalOverlay) {
-        closeProductModal();
-      }
-    });
-    
-    // Drag to close functionality for product modal
-    let startY = 0;
-    let currentY = 0;
-    let isDragging = false;
-    
-    productModalHandle.addEventListener('touchstart', (e) => {
-      startY = e.touches[0].clientY;
-      isDragging = true;
-      productModal.classList.add('dragging');
-    });
-    
-    productModalHandle.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
-      currentY = e.touches[0].clientY;
-      const diff = currentY - startY;
-      
-      if (diff > 0) {
-        productModal.style.transform = `translateY(${diff}px)`;
-      }
-    });
-    
-    productModalHandle.addEventListener('touchend', (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-      productModal.classList.remove('dragging');
-      
-      const diff = currentY - startY;
-      
-      if (diff > 100) {
-        closeProductModal();
-        productModal.style.transform = '';
-      } else {
-        productModal.style.transform = '';
-      }
-    });
-    
-    // Mouse drag support
-    productModalHandle.addEventListener('mousedown', (e) => {
-      startY = e.clientY;
-      isDragging = true;
-      productModal.classList.add('dragging');
-    });
-    
-    document.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      currentY = e.clientY;
-      const diff = currentY - startY;
-      
-      if (diff > 0) {
-        productModal.style.transform = `translateY(${diff}px)`;
-      }
-    });
-    
-    document.addEventListener('mouseup', (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-      productModal.classList.remove('dragging');
-      
-      const diff = currentY - startY;
-      
-      if (diff > 100) {
-        closeProductModal();
-        productModal.style.transform = '';
-      } else {
-        productModal.style.transform = '';
-      }
-    });
-    
-
-    
-    // Update cart count
-    function updateCartCount() {
-      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-      document.getElementById('cartCount').textContent = totalItems;
-    }
-    
-    // Cart icon click - show cart modal
-    const cartModal = document.getElementById('cartModal');
-    const cartModalOverlay = document.getElementById('cartModalOverlay');
-    const cartModalHandle = document.getElementById('cartModalHandle');
-    
-    document.getElementById('cartIcon').addEventListener('click', (e) => {
-      e.stopPropagation();
-      e.preventDefault();
-      // Close product modal if open
-      closeProductModal();
-      // Close mobile menu if open
-      closeMobileMenu();
-      renderCart();
-      cartModalOverlay.classList.add('active');
-      cartModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-    
-    function closeCartModal() {
-      cartModalOverlay.classList.remove('active');
-      cartModal.classList.remove('active');
-      if (!productModal.classList.contains('active')) {
-        document.body.style.overflow = '';
-      }
-    }
-    
-    cartModalOverlay.addEventListener('click', (e) => {
-      if (e.target === cartModalOverlay) {
-        closeCartModal();
-      }
-    });
-    
-    // Drag to close functionality for cart modal
-    let cartStartY = 0;
-    let cartCurrentY = 0;
-    let isCartDragging = false;
-    
-    cartModalHandle.addEventListener('touchstart', (e) => {
-      cartStartY = e.touches[0].clientY;
-      isCartDragging = true;
-      cartModal.classList.add('dragging');
-    });
-    
-    cartModalHandle.addEventListener('touchmove', (e) => {
-      if (!isCartDragging) return;
-      cartCurrentY = e.touches[0].clientY;
-      const diff = cartCurrentY - cartStartY;
-      
-      if (diff > 0) {
-        cartModal.style.transform = `translateY(${diff}px)`;
-      }
-    });
-    
-    cartModalHandle.addEventListener('touchend', (e) => {
-      if (!isCartDragging) return;
-      isCartDragging = false;
-      cartModal.classList.remove('dragging');
-      
-      const diff = cartCurrentY - cartStartY;
-      
-      if (diff > 100) {
-        closeCartModal();
-        cartModal.style.transform = '';
-      } else {
-        cartModal.style.transform = '';
-      }
-    });
-    
-    // Mouse drag for cart
-    cartModalHandle.addEventListener('mousedown', (e) => {
-      cartStartY = e.clientY;
-      isCartDragging = true;
-      cartModal.classList.add('dragging');
-      e.preventDefault();
-    });
-    
-    document.addEventListener('mousemove', (e) => {
-      if (!isCartDragging) return;
-      cartCurrentY = e.clientY;
-      const diff = cartCurrentY - cartStartY;
-      
-      if (diff > 0) {
-        cartModal.style.transform = `translateY(${diff}px)`;
-      }
-    });
-    
-    document.addEventListener('mouseup', (e) => {
-      if (!isCartDragging) return;
-      isCartDragging = false;
-      cartModal.classList.remove('dragging');
-      
-      const diff = cartCurrentY - cartStartY;
-      
-      if (diff > 100) {
-        closeCartModal();
-      }
-      cartModal.style.transform = '';
-    });
-    
-    function renderCart() {
-      const container = document.getElementById('cartItemsContainer');
-      
-      if (cart.length === 0) {
-        container.innerHTML = `
-          <div class="empty-cart">
-            <i class="fas fa-shopping-bag"></i>
-            <p style="font-size: 1rem; margin-top: 1rem;">Your cart is empty</p>
-            <p style="font-size: 0.875rem; color: #999; margin-top: 0.5rem;">Add some items to get started!</p>
-          </div>
-        `;
-        return;
-      }
-      
-      let total = 0;
-      let itemsHTML = '';
-      
-      cart.forEach((item, index) => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        
-        itemsHTML += `
-          <div class="cart-item">
-            <div class="cart-item-icon">
-              <i class="${item.icon}" style="font-size: 2.5rem;"></i>
-            </div>
-            <div class="cart-item-details">
-              <div class="cart-item-name">${item.name}</div>
-              <div class="cart-item-price">$${item.price.toLocaleString()} each</div>
-              <div class="cart-item-quantity">
-                <button class="cart-qty-btn" onclick="updateCartQuantity(${index}, -1)">-</button>
-                <span style="min-width: 30px; text-align: center;">${item.quantity}</span>
-                <button class="cart-qty-btn" onclick="updateCartQuantity(${index}, 1)">+</button>
-                <span style="flex: 1;"></span>
-                <button class="cart-remove-btn" onclick="removeFromCart(${index})">
-                  <i class="fas fa-trash"></i> Remove
-                </button>
-              </div>
-            </div>
-          </div>
-        `;
-      });
-      
-      container.innerHTML = `
-        ${itemsHTML}
-        <div class="cart-summary">
-          <div class="cart-total">
-            <span>Total:</span>
-            <span>$${total.toLocaleString()}</span>
-          </div>
-          <button class="cart-checkout-btn" onclick="checkoutCart()">
-            <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
-          </button>
-        </div>
-      `;
-    }
-    
-    window.updateCartQuantity = function(index, change) {
-      if (cart[index].quantity + change <= 0) {
-        removeFromCart(index);
-        return;
-      }
-      
-      if (cart[index].quantity + change > cart[index].stock) {
-        return;
-      }
-      
-      cart[index].quantity += change;
-      updateCartCount();
-      renderCart();
-    };
-    
-    window.removeFromCart = function(index) {
-      cart.splice(index, 1);
-      updateCartCount();
-      renderCart();
-    };
-    
-    window.checkoutCart = function() {
-      let cartMessage = '🛍️ *My Order*\n\n';
-      let total = 0;
-      
-      cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        cartMessage += `• ${item.name}\n  Qty: ${item.quantity} × $${item.price.toLocaleString()} = $${itemTotal.toLocaleString()}\n\n`;
-      });
-      
-      cartMessage += `*Total: $${total.toLocaleString()}*\n\nI'd like to proceed with this order. Please let me know the next steps!`;
-      
-      const whatsappUrl = `https://wa.me/${defaultConfig.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(cartMessage)}`;
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-    };
-
-    async function onConfigChange(config) {
-      const customFont = config.font_family || defaultConfig.font_family;
-      const baseSize = config.font_size || defaultConfig.font_size;
-      const baseFontStack = '-apple-system, BlinkMacSystemFont, sans-serif';
-      const serifStack = 'Georgia, serif';
-      
-      // Apply colors
-      const backgroundColor = config.background_color || defaultConfig.background_color;
-      const surfaceColor = config.surface_color || defaultConfig.surface_color;
-      const textColor = config.text_color || defaultConfig.text_color;
-      const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
-      const accentColor = config.accent_color || defaultConfig.accent_color;
-      
-      document.body.style.background = backgroundColor;
-      document.body.style.color = textColor;
-      
-      const mainWrapper = document.querySelector('.main-wrapper');
-      mainWrapper.style.background = backgroundColor;
-      
-      // Navigation
-      const navSticky = document.querySelector('.nav-sticky');
-      navSticky.style.background = `rgba(${parseInt(backgroundColor.slice(1,3), 16)}, ${parseInt(backgroundColor.slice(3,5), 16)}, ${parseInt(backgroundColor.slice(5,7), 16)}, 0.95)`;
-      
-      const navLinks = document.querySelectorAll('.nav-link');
-      navLinks.forEach(link => {
-        link.style.color = textColor;
-      });
-      
-      // Hero section
-      const heroSection = document.querySelector('.hero-section');
-      heroSection.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${surfaceColor} 100%)`;
-      
-      // CTA button
-      const ctaButton = document.querySelector('.cta-button');
-      ctaButton.style.background = primaryActionColor;
-      ctaButton.style.borderColor = primaryActionColor;
-      ctaButton.style.color = backgroundColor;
-      
-      // Collection overlays
-      const collectionTitles = document.querySelectorAll('.collection-title');
-      collectionTitles.forEach(title => {
-        title.style.color = backgroundColor;
-      });
-      
-      // About section
-      const aboutSection = document.querySelector('.about-section');
-      aboutSection.style.background = surfaceColor;
-      
-      const aboutText = document.getElementById('about-text');
-      aboutText.style.color = accentColor;
-      
-      // Contact section
-      const contactSection = document.querySelector('.contact-section');
-      contactSection.style.background = primaryActionColor;
-      contactSection.style.color = backgroundColor;
-      
-      const contactButtons = document.querySelectorAll('.contact-button');
-      contactButtons.forEach(button => {
-        button.style.color = backgroundColor;
-        button.style.borderColor = `rgba(${parseInt(backgroundColor.slice(1,3), 16)}, ${parseInt(backgroundColor.slice(3,5), 16)}, ${parseInt(backgroundColor.slice(5,7), 16)}, 0.3)`;
-      });
-      
-      const socialIcons = document.querySelectorAll('.social-icon');
-      socialIcons.forEach(icon => {
-        icon.style.color = backgroundColor;
-        icon.style.borderColor = `rgba(${parseInt(backgroundColor.slice(1,3), 16)}, ${parseInt(backgroundColor.slice(3,5), 16)}, ${parseInt(backgroundColor.slice(5,7), 16)}, 0.3)`;
-      });
-      
-      // Apply fonts
-      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
-      
-      const serifElements = document.querySelectorAll('.serif-font');
-      serifElements.forEach(el => {
-        el.style.fontFamily = `${customFont}, ${serifStack}`;
-      });
-      
-      // Apply font sizes
-      document.body.style.fontSize = `${baseSize}px`;
-      
-      const heroTagline = document.querySelector('.hero-tagline');
-      heroTagline.style.fontSize = `${baseSize * 1.25}px`;
-      
-      const navLinksSize = document.querySelectorAll('.nav-link');
-      navLinksSize.forEach(link => {
-        link.style.fontSize = `${baseSize * 0.875}px`;
-      });
-      
-      const ctaButtons = document.querySelectorAll('.cta-button, .contact-button');
-      ctaButtons.forEach(btn => {
-        btn.style.fontSize = `${baseSize * 0.875}px`;
-      });
-      
-      const aboutTextSize = document.getElementById('about-text');
-      aboutTextSize.style.fontSize = `${baseSize * 1.125}px`;
-      
-      // Update text content
-      document.getElementById('hero-headline').textContent = config.hero_headline || defaultConfig.hero_headline;
-      document.getElementById('hero-tagline').textContent = config.hero_tagline || defaultConfig.hero_tagline;
-      document.getElementById('hero-cta').textContent = config.hero_cta || defaultConfig.hero_cta;
-      document.getElementById('mens-title').textContent = config.mens_title || defaultConfig.mens_title;
-      document.getElementById('womens-title').textContent = config.womens_title || defaultConfig.womens_title;
-      document.getElementById('about-headline').textContent = config.about_headline || defaultConfig.about_headline;
-      document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
-      document.getElementById('contact-headline').textContent = config.contact_headline || defaultConfig.contact_headline;
-      
-      // Update contact information
-      const phoneNumber = config.phone_number || defaultConfig.phone_number;
-      const whatsappNumber = config.whatsapp_number || defaultConfig.whatsapp_number;
-      const emailAddress = config.email_address || defaultConfig.email_address;
-      
-      const phoneDisplays = document.querySelectorAll('#phone-display');
-      phoneDisplays.forEach(el => el.textContent = phoneNumber);
-      
-      const phoneLinks = document.querySelectorAll('#footer-phone, #phone-button');
-      phoneLinks.forEach(link => link.href = `tel:${phoneNumber.replace(/\D/g, '')}`);
-      
-      const whatsappLinks = document.querySelectorAll('#footer-whatsapp, #whatsapp-button');
-      whatsappLinks.forEach(link => link.href = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}`);
-      
-      const emailDisplays = document.querySelectorAll('#email-display');
-      emailDisplays.forEach(el => el.textContent = emailAddress);
-      
-      const emailLinks = document.querySelectorAll('#footer-email, #email-button');
-      emailLinks.forEach(link => link.href = `mailto:${emailAddress}`);
-    }
-
-    function mapToCapabilities(config) {
-      return {
-        recolorables: [
-          {
-            get: () => config.background_color || defaultConfig.background_color,
-            set: (value) => {
-              config.background_color = value;
-              window.elementSdk.setConfig({ background_color: value });
-            }
-          },
-          {
-            get: () => config.surface_color || defaultConfig.surface_color,
-            set: (value) => {
-              config.surface_color = value;
-              window.elementSdk.setConfig({ surface_color: value });
-            }
-          },
-          {
-            get: () => config.text_color || defaultConfig.text_color,
-            set: (value) => {
-              config.text_color = value;
-              window.elementSdk.setConfig({ text_color: value });
-            }
-          },
-          {
-            get: () => config.primary_action_color || defaultConfig.primary_action_color,
-            set: (value) => {
-              config.primary_action_color = value;
-              window.elementSdk.setConfig({ primary_action_color: value });
-            }
-          },
-          {
-            get: () => config.accent_color || defaultConfig.accent_color,
-            set: (value) => {
-              config.accent_color = value;
-              window.elementSdk.setConfig({ accent_color: value });
-            }
-          }
-        ],
-        borderables: [],
-        fontEditable: {
-          get: () => config.font_family || defaultConfig.font_family,
-          set: (value) => {
-            config.font_family = value;
-            window.elementSdk.setConfig({ font_family: value });
-          }
-        },
-        fontSizeable: {
-          get: () => config.font_size || defaultConfig.font_size,
-          set: (value) => {
-            config.font_size = value;
-            window.elementSdk.setConfig({ font_size: value });
-          }
-        }
-      };
-    }
-
-    function mapToEditPanelValues(config) {
-      return new Map([
-        ["hero_headline", config.hero_headline || defaultConfig.hero_headline],
-        ["hero_tagline", config.hero_tagline || defaultConfig.hero_tagline],
-        ["hero_cta", config.hero_cta || defaultConfig.hero_cta],
-        ["mens_title", config.mens_title || defaultConfig.mens_title],
-        ["womens_title", config.womens_title || defaultConfig.womens_title],
-        ["about_headline", config.about_headline || defaultConfig.about_headline],
-        ["about_text", config.about_text || defaultConfig.about_text],
-        ["contact_headline", config.contact_headline || defaultConfig.contact_headline],
-        ["phone_number", config.phone_number || defaultConfig.phone_number],
-        ["whatsapp_number", config.whatsapp_number || defaultConfig.whatsapp_number],
-        ["email_address", config.email_address || defaultConfig.email_address]
-      ]);
-    }
-
-    // Initialize SDK
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities,
-        mapToEditPanelValues
-      });
-    }
-  </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b823577853ec13d',t:'MTc2NzQ0MDI5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
-
