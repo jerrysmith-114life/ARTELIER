@@ -6,6 +6,7 @@
   <title>Luxury Fashion Brand</title>
   <script src="/_sdk/element_sdk.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     body {
       box-sizing: border-box;
@@ -82,29 +83,12 @@
     
     .mobile-menu-btn {
       display: none;
-      flex-direction: column;
-      gap: 5px;
+      font-size: 1.5rem;
       cursor: pointer;
       padding: 8px;
-    }
-    
-    .mobile-menu-btn span {
-      width: 24px;
-      height: 2px;
-      background: #1a1a1a;
-      transition: all 0.3s ease;
-    }
-    
-    .mobile-menu-btn.active span:nth-child(1) {
-      transform: rotate(45deg) translate(7px, 7px);
-    }
-    
-    .mobile-menu-btn.active span:nth-child(2) {
-      opacity: 0;
-    }
-    
-    .mobile-menu-btn.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -7px);
+      color: #1a1a1a;
+      background: none;
+      border: none;
     }
     
     .desktop-nav {
@@ -114,27 +98,82 @@
     }
     
     .mobile-nav {
-      display: none;
       position: fixed;
-      top: 76px;
+      height: 100vh;
+      top: 0;
       left: 0;
       right: 0;
-      background: rgba(250, 250, 250, 0.98);
-      backdrop-filter: blur(10px);
-      padding: 2rem;
+      bottom: 0;
+      background: #1a1a1a;
+      display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      transform: translateY(-100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 998;
+      padding: 2rem;
+      overflow: hidden;
     }
     
     .mobile-nav.active {
-      display: flex;
+      transform: translateY(0);
     }
     
     .mobile-nav .nav-link {
-      font-size: 1rem;
+      font-size: 2rem;
       text-align: center;
-      padding: 0.5rem 0;
+      padding: 1.25rem 0;
+      border-bottom: none;
+      color: #fafafa;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 300;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav.active .nav-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .mobile-nav.active .nav-link:nth-child(1) { transition-delay: 0.1s; }
+    .mobile-nav.active .nav-link:nth-child(2) { transition-delay: 0.15s; }
+    .mobile-nav.active .nav-link:nth-child(3) { transition-delay: 0.2s; }
+    .mobile-nav.active .nav-link:nth-child(4) { transition-delay: 0.25s; }
+    .mobile-nav.active .nav-link:nth-child(5) { transition-delay: 0.3s; }
+    .mobile-nav.active .nav-link:nth-child(6) { transition-delay: 0.35s; }
+    
+    .mobile-nav .nav-link::after {
+      background: #fafafa;
+    }
+    
+    .mobile-nav .nav-link:hover {
+      color: #fafafa;
+      opacity: 0.7;
+    }
+    
+    .mobile-menu-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      color: #fafafa;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease 0.2s;
+    }
+    
+    .mobile-nav.active .mobile-menu-close {
+      opacity: 1;
     }
     
     /* Hero Section */
@@ -190,7 +229,7 @@
       overflow: hidden;
       background: #fff;
       cursor: pointer;
-      transition: transform 0.5s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
     }
     
@@ -207,7 +246,7 @@
       align-items: center;
       justify-content: center;
       font-size: 4rem;
-      transition: transform 0.5s ease;
+      transition: transform 0.3s ease;
       position: relative;
     }
     
@@ -309,10 +348,13 @@
       background: #fff;
       aspect-ratio: 1;
       transition: transform 0.3s ease;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
     }
     
     .lookbook-item:hover {
       transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     }
     
     .lookbook-image {
@@ -477,12 +519,19 @@
       align-items: center;
       gap: 0.5rem;
       font-size: 1.25rem;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+      z-index: 50;
+    }
+    
+    .cart-icon:hover {
+      opacity: 0.7;
     }
     
     .cart-count {
       position: absolute;
-      top: -8px;
-      right: -8px;
+      top: -4px;
+      right: -4px;
       background: #1a1a1a;
       color: #fafafa;
       font-size: 0.7rem;
@@ -491,6 +540,139 @@
       border-radius: 50%;
       min-width: 18px;
       text-align: center;
+    }
+    
+    /* Cart Modal */
+    .cart-modal {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      z-index: 1001;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cart-modal.active {
+      transform: translateY(0);
+    }
+    
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .cart-item-icon {
+      font-size: 2.5rem;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    
+    .cart-item-details {
+      flex: 1;
+    }
+    
+    .cart-item-name {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
+    
+    .cart-item-price {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .cart-qty-btn {
+      width: 28px;
+      height: 28px;
+      border: 1px solid #ddd;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.875rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+    
+    .cart-qty-btn:hover {
+      background: #f5f5f5;
+    }
+    
+    .cart-remove-btn {
+      background: transparent;
+      border: none;
+      color: #dc2626;
+      cursor: pointer;
+      padding: 0.5rem;
+      font-size: 0.875rem;
+      transition: opacity 0.2s ease;
+    }
+    
+    .cart-remove-btn:hover {
+      opacity: 0.7;
+    }
+    
+    .cart-summary {
+      padding: 1.5rem 0;
+      border-top: 2px solid #1a1a1a;
+    }
+    
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cart-checkout-btn {
+      width: 100%;
+      padding: 1rem;
+      background: #1a1a1a;
+      color: #fafafa;
+      border: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .cart-checkout-btn:hover {
+      background: #333;
+    }
+    
+    .empty-cart {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #666;
+    }
+    
+    .empty-cart i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.3;
     }
     
     /* Product Modal */
@@ -525,6 +707,11 @@
       overflow-y: auto;
       border-radius: 20px 20px 0 0;
       box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+      touch-action: pan-y;
+    }
+    
+    .product-modal.dragging {
+      transition: none;
     }
     
     .product-modal.active {
@@ -537,6 +724,11 @@
       background: #ddd;
       border-radius: 2px;
       margin: 1rem auto 0.5rem;
+      cursor: grab;
+    }
+    
+    .modal-handle:active {
+      cursor: grabbing;
     }
     
     .modal-content {
@@ -772,14 +964,11 @@
      <div style="display: flex; align-items: center; gap: 1.5rem;">
       <div class="desktop-nav"><a href="#mens" class="nav-link">Men</a> <a href="#womens" class="nav-link">Women</a> <a href="#lookbook" class="nav-link">Lookbook</a> <a href="#featured" class="nav-link">Featured</a> <a href="#about" class="nav-link">About</a> <a href="#contact" class="nav-link">Contact</a>
       </div>
-      <div class="cart-icon" id="cartIcon">
-       🛒 <span class="cart-count" id="cartCount">0</span>
-      </div>
-      <div class="mobile-menu-btn" id="mobileMenuBtn"><span></span> <span></span> <span></span>
-      </div>
+      <div class="cart-icon" id="cartIcon"><i class="fas fa-shopping-bag"></i> <span class="cart-count" id="cartCount">0</span>
+      </div><button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu"> <i class="fas fa-bars" id="menuIcon"></i> </button>
      </div>
     </div>
-    <div class="mobile-nav" id="mobileNav"><a href="#mens" class="nav-link">Men</a> <a href="#womens" class="nav-link">Women</a> <a href="#lookbook" class="nav-link">Lookbook</a> <a href="#featured" class="nav-link">Featured</a> <a href="#about" class="nav-link">About</a> <a href="#contact" class="nav-link">Contact</a>
+    <div class="mobile-nav" id="mobileNav"><button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu"> <i class="fas fa-times"></i> </button> <a href="#mens" class="nav-link">Men</a> <a href="#womens" class="nav-link">Women</a> <a href="#lookbook" class="nav-link">Lookbook</a> <a href="#featured" class="nav-link">Featured</a> <a href="#about" class="nav-link">About</a> <a href="#contact" class="nav-link">Contact</a>
     </div>
    </nav><!-- Hero Section -->
    <section class="hero-section">
@@ -791,18 +980,18 @@
    <section id="mens" class="section-container">
     <h2 class="section-title serif-font" id="mens-title">Men's Collection</h2>
     <div class="grid-2" style="margin-bottom: 4rem;">
-     <div class="collection-card">
+     <div class="collection-card" data-category="mens-tailored">
       <div class="collection-image">
-       👔
+       <i class="fas fa-user-tie" style="font-size: 5rem;"></i>
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Tailored Essentials</h3>
        <p class="collection-description">Impeccably crafted suits, blazers, and dress shirts designed for the modern professional. Each piece combines Italian tailoring traditions with contemporary silhouettes.</p>
       </div>
      </div>
-     <div class="collection-card">
+     <div class="collection-card" data-category="mens-outerwear">
       <div class="collection-image">
-       🧥
+       <i class="fas fa-vest" style="font-size: 5rem;"></i>
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Outerwear</h3>
@@ -811,18 +1000,18 @@
      </div>
     </div>
     <div class="grid-2">
-     <div class="collection-card">
+     <div class="collection-card" data-category="mens-denim">
       <div class="collection-image">
-       👖
+       <i class="fas fa-jeans" style="font-size: 5rem;"></i>
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Denim &amp; Casual</h3>
        <p class="collection-description">Premium Japanese selvedge denim and refined casual wear. The perfect balance between comfort and sophistication.</p>
       </div>
      </div>
-     <div class="collection-card">
+     <div class="collection-card" data-category="mens-footwear">
       <div class="collection-image">
-       👞
+       <i class="fas fa-shoe-prints" style="font-size: 5rem;"></i>
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Footwear</h3>
@@ -834,18 +1023,18 @@
    <section id="womens" class="section-container" style="background: #fff;">
     <h2 class="section-title serif-font" id="womens-title">Women's Collection</h2>
     <div class="grid-2" style="margin-bottom: 4rem;">
-     <div class="collection-card">
+     <div class="collection-card" data-category="womens-dresses">
       <div class="collection-image">
-       👗
+       <i class="fas fa-female" style="font-size: 5rem;"></i>
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Modern Silhouettes</h3>
        <p class="collection-description">Architectural dresses and sculptural separates that celebrate feminine strength. Cut from luxurious fabrics with meticulous attention to fit and drape.</p>
       </div>
      </div>
-     <div class="collection-card">
+     <div class="collection-card" data-category="womens-knitwear">
       <div class="collection-image">
-       🧶
+       <i class="fas fa-mitten" style="font-size: 5rem;"></i>
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Knitwear</h3>
@@ -854,18 +1043,18 @@
      </div>
     </div>
     <div class="grid-2">
-     <div class="collection-card">
+     <div class="collection-card" data-category="womens-blouses">
       <div class="collection-image">
-       👚
+       <i class="fas fa-tshirt" style="font-size: 5rem;"></i>
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Blouses &amp; Shirts</h3>
        <p class="collection-description">Refined tops in silk, organic cotton, and linen. Versatile pieces that transition effortlessly from boardroom to evening.</p>
       </div>
      </div>
-     <div class="collection-card">
+     <div class="collection-card" data-category="womens-accessories">
       <div class="collection-image">
-       👜
+       <i class="fas fa-gem" style="font-size: 5rem;"></i>
       </div>
       <div class="collection-overlay">
        <h3 class="collection-title">Accessories</h3>
@@ -880,32 +1069,32 @@
     <div class="grid-3">
      <div class="lookbook-item">
       <div class="lookbook-image">
-       🖤
+       <i class="fas fa-briefcase" style="font-size: 4rem; color: #333;"></i>
       </div>
      </div>
      <div class="lookbook-item">
       <div class="lookbook-image">
-       🤍
+       <i class="fas fa-hat-cowboy" style="font-size: 4rem; color: #666;"></i>
       </div>
      </div>
      <div class="lookbook-item">
       <div class="lookbook-image">
-       🤎
+       <i class="fas fa-glasses" style="font-size: 4rem; color: #444;"></i>
       </div>
      </div>
      <div class="lookbook-item">
       <div class="lookbook-image">
-       💼
+       <i class="fas fa-crown" style="font-size: 4rem; color: #555;"></i>
       </div>
      </div>
      <div class="lookbook-item">
       <div class="lookbook-image">
-       👜
+       <i class="fas fa-ring" style="font-size: 4rem; color: #777;"></i>
       </div>
      </div>
      <div class="lookbook-item">
       <div class="lookbook-image">
-       👞
+       <i class="fas fa-watch" style="font-size: 4rem; color: #333;"></i>
       </div>
      </div>
     </div>
@@ -918,7 +1107,7 @@
       <div class="product-image">
        <div class="product-badge">
         New
-       </div> 🧥
+       </div><i class="fas fa-vest" style="font-size: 4rem;"></i>
       </div>
       <div class="product-info">
        <h3 class="product-name">Cashmere Overcoat</h3>
@@ -930,7 +1119,7 @@
       <div class="product-image">
        <div class="product-badge">
         Bestseller
-       </div> 👔
+       </div><i class="fas fa-user-tie" style="font-size: 4rem;"></i>
       </div>
       <div class="product-info">
        <h3 class="product-name">Italian Wool Suit</h3>
@@ -939,8 +1128,7 @@
       </div>
      </div>
      <div class="product-card" data-product-id="3" style="cursor: pointer;">
-      <div class="product-image">
-       👗
+      <div class="product-image"><i class="fas fa-female" style="font-size: 4rem;"></i>
       </div>
       <div class="product-info">
        <h3 class="product-name">Silk Midi Dress</h3>
@@ -952,7 +1140,7 @@
       <div class="product-image">
        <div class="product-badge">
         Limited
-       </div> 🧶
+       </div><i class="fas fa-mitten" style="font-size: 4rem;"></i>
       </div>
       <div class="product-info">
        <h3 class="product-name">Merino Turtleneck</h3>
@@ -961,8 +1149,7 @@
       </div>
      </div>
      <div class="product-card" data-product-id="5" style="cursor: pointer;">
-      <div class="product-image">
-       👖
+      <div class="product-image"><i class="fas fa-jeans" style="font-size: 4rem;"></i>
       </div>
       <div class="product-info">
        <h3 class="product-name">Selvedge Denim</h3>
@@ -974,7 +1161,7 @@
       <div class="product-image">
        <div class="product-badge">
         New
-       </div> 👚
+       </div><i class="fas fa-tshirt" style="font-size: 4rem;"></i>
       </div>
       <div class="product-info">
        <h3 class="product-name">Organic Cotton Shirt</h3>
@@ -983,8 +1170,7 @@
       </div>
      </div>
      <div class="product-card" data-product-id="7" style="cursor: pointer;">
-      <div class="product-image">
-       👞
+      <div class="product-image"><i class="fas fa-shoe-prints" style="font-size: 4rem;"></i>
       </div>
       <div class="product-info">
        <h3 class="product-name">Leather Derby</h3>
@@ -996,7 +1182,7 @@
       <div class="product-image">
        <div class="product-badge">
         Bestseller
-       </div> 👜
+       </div><i class="fas fa-shopping-bag" style="font-size: 4rem;"></i>
       </div>
       <div class="product-info">
        <h3 class="product-name">Minimal Tote</h3>
@@ -1018,7 +1204,7 @@
      <div class="footer-grid">
       <div class="footer-section">
        <h3>Contact</h3>
-       <div class="footer-links"><a href="tel:+15551234567" class="footer-link" id="footer-phone">📞 <span id="phone-display">+1 (555) 123-4567</span></a> <a href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" class="footer-link" id="footer-whatsapp">💬 WhatsApp</a> <a href="mailto:hello@atelier.com" class="footer-link" id="footer-email">✉️ <span id="email-display">hello@atelier.com</span></a>
+       <div class="footer-links"><a href="tel:+15551234567" class="footer-link" id="footer-phone"><i class="fas fa-phone"></i> <span id="phone-display">+1 (555) 123-4567</span></a> <a href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" class="footer-link" id="footer-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a> <a href="mailto:hello@atelier.com" class="footer-link" id="footer-email"><i class="fas fa-envelope"></i> <span id="email-display">hello@atelier.com</span></a>
        </div>
       </div>
       <div class="footer-section">
@@ -1033,7 +1219,7 @@
       </div>
       <div class="footer-section">
        <h3>Follow Us</h3>
-       <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;"><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">📷</a> <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok">🎵</a> <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X">𝕏</a> <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">💼</a>
+       <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;"><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a> <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a> <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X"><i class="fab fa-x-twitter"></i></a> <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
        </div>
       </div>
      </div>
@@ -1044,10 +1230,10 @@
    </section><!-- Product Modal -->
    <div class="product-modal-overlay" id="productModalOverlay"></div>
    <div class="product-modal" id="productModal">
-    <div class="modal-handle"></div>
+    <div class="modal-handle" id="productModalHandle"></div>
     <div class="modal-content">
      <div class="modal-product-image" id="modalProductImage">
-      🧥
+      <i class="fas fa-vest" style="font-size: 5rem;"></i>
      </div>
      <h2 class="modal-product-name" id="modalProductName">Product Name</h2>
      <p class="modal-product-category" id="modalProductCategory">Category</p>
@@ -1065,6 +1251,14 @@
      </div>
      <div class="modal-actions"><button class="modal-btn btn-order" id="orderNowBtn">Order Now</button> <button class="modal-btn btn-cart" id="addToCartBtn">Add to Cart</button>
      </div>
+    </div>
+   </div><!-- Cart Modal -->
+   <div class="product-modal-overlay" id="cartModalOverlay"></div>
+   <div class="cart-modal" id="cartModal">
+    <div class="modal-handle" id="cartModalHandle"></div>
+    <div class="modal-content">
+     <h2 style="font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; text-align: center;">Shopping Cart</h2>
+     <div id="cartItemsContainer"></div>
     </div>
    </div>
   </div>
@@ -1092,14 +1286,14 @@
     
     // Product data
     const products = {
-      1: { name: "Cashmere Overcoat", category: "Outerwear", price: 1245, icon: "🧥", stock: 15, material: "100% Cashmere", sku: "ATL-OUT-001", description: "Luxuriously soft cashmere overcoat with a timeless silhouette. Fully lined with Italian cupro, featuring horn buttons and hand-finished details." },
-      2: { name: "Italian Wool Suit", category: "Tailoring", price: 1890, icon: "👔", stock: 8, material: "Italian Wool", sku: "ATL-SUT-002", description: "Impeccably tailored two-piece suit crafted from Super 120s Italian wool. Features natural shoulder construction and functional buttonholes." },
-      3: { name: "Silk Midi Dress", category: "Dresses", price: 685, icon: "👗", stock: 12, material: "Pure Silk", sku: "ATL-DRS-003", description: "Elegant midi dress in flowing silk charmeuse. Features a cowl neckline and bias-cut construction for a flattering drape." },
-      4: { name: "Merino Turtleneck", category: "Knitwear", price: 395, icon: "🧶", stock: 5, material: "Merino Wool", sku: "ATL-KNT-004", description: "Classic turtleneck sweater in fine-gauge merino wool. Lightweight yet warm with a refined finish. Limited edition colorway." },
-      5: { name: "Selvedge Denim", category: "Denim", price: 285, icon: "👖", stock: 20, material: "Japanese Selvedge", sku: "ATL-DEN-005", description: "Premium selvedge denim from a renowned Japanese mill. Unwashed raw denim that ages beautifully with wear." },
-      6: { name: "Organic Cotton Shirt", category: "Shirts", price: 225, icon: "👚", stock: 18, material: "Organic Cotton", sku: "ATL-SHT-006", description: "Crisp button-down shirt in certified organic cotton poplin. Mother-of-pearl buttons and French seam construction." },
-      7: { name: "Leather Derby", category: "Footwear", price: 495, icon: "👞", stock: 10, material: "Italian Leather", sku: "ATL-FOT-007", description: "Hand-finished derby shoes in vegetable-tanned Italian leather. Goodyear welted with leather soles for durability." },
-      8: { name: "Minimal Tote", category: "Accessories", price: 575, icon: "👜", stock: 14, material: "Full-Grain Leather", sku: "ATL-ACC-008", description: "Spacious tote bag in full-grain leather. Unlined interior with internal pocket. Develops rich patina over time." }
+      1: { name: "Cashmere Overcoat", category: "Outerwear", price: 1245, icon: "fas fa-vest", stock: 15, material: "100% Cashmere", sku: "ATL-OUT-001", description: "Luxuriously soft cashmere overcoat with a timeless silhouette. Fully lined with Italian cupro, featuring horn buttons and hand-finished details." },
+      2: { name: "Italian Wool Suit", category: "Tailoring", price: 1890, icon: "fas fa-user-tie", stock: 8, material: "Italian Wool", sku: "ATL-SUT-002", description: "Impeccably tailored two-piece suit crafted from Super 120s Italian wool. Features natural shoulder construction and functional buttonholes." },
+      3: { name: "Silk Midi Dress", category: "Dresses", price: 685, icon: "fas fa-female", stock: 12, material: "Pure Silk", sku: "ATL-DRS-003", description: "Elegant midi dress in flowing silk charmeuse. Features a cowl neckline and bias-cut construction for a flattering drape." },
+      4: { name: "Merino Turtleneck", category: "Knitwear", price: 395, icon: "fas fa-mitten", stock: 5, material: "Merino Wool", sku: "ATL-KNT-004", description: "Classic turtleneck sweater in fine-gauge merino wool. Lightweight yet warm with a refined finish. Limited edition colorway." },
+      5: { name: "Selvedge Denim", category: "Denim", price: 285, icon: "fas fa-jeans", stock: 20, material: "Japanese Selvedge", sku: "ATL-DEN-005", description: "Premium selvedge denim from a renowned Japanese mill. Unwashed raw denim that ages beautifully with wear." },
+      6: { name: "Organic Cotton Shirt", category: "Shirts", price: 225, icon: "fas fa-tshirt", stock: 18, material: "Organic Cotton", sku: "ATL-SHT-006", description: "Crisp button-down shirt in certified organic cotton poplin. Mother-of-pearl buttons and French seam construction." },
+      7: { name: "Leather Derby", category: "Footwear", price: 495, icon: "fas fa-shoe-prints", stock: 10, material: "Italian Leather", sku: "ATL-FOT-007", description: "Hand-finished derby shoes in vegetable-tanned Italian leather. Goodyear welted with leather soles for durability." },
+      8: { name: "Minimal Tote", category: "Accessories", price: 575, icon: "fas fa-shopping-bag", stock: 14, material: "Full-Grain Leather", sku: "ATL-ACC-008", description: "Spacious tote bag in full-grain leather. Unlined interior with internal pocket. Develops rich patina over time." }
     };
     
     // Cart management
@@ -1110,57 +1304,417 @@
     // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileNav = document.getElementById('mobileNav');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const menuIcon = document.getElementById('menuIcon');
     
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenuBtn.classList.toggle('active');
-      mobileNav.classList.toggle('active');
+    function toggleMobileMenu(e) {
+      if (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+      const isActive = mobileNav.classList.toggle('active');
+      document.body.style.overflow = isActive ? 'hidden' : '';
+    }
+    
+    function closeMobileMenu() {
+      mobileNav.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      toggleMobileMenu(e);
+    });
+    
+    mobileMenuClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      closeMobileMenu();
     });
     
     // Close mobile menu when clicking a link
     const mobileNavLinks = mobileNav.querySelectorAll('.nav-link');
     mobileNavLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenuBtn.classList.remove('active');
-        mobileNav.classList.remove('active');
+      link.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMobileMenu();
       });
+    });
+    
+    // Close mobile menu when clicking the overlay (dark background)
+    mobileNav.addEventListener('click', (e) => {
+      // Only close if clicking directly on the mobile nav background, not its children
+      if (e.target === mobileNav) {
+        e.stopPropagation();
+        closeMobileMenu();
+      }
     });
     
     // Product modal functionality
     const productModal = document.getElementById('productModal');
     const productModalOverlay = document.getElementById('productModalOverlay');
+    const productModalHandle = document.getElementById('productModalHandle');
     const productCards = document.querySelectorAll('.product-card');
+    const collectionCards = document.querySelectorAll('.collection-card');
     
+    // Collection data for modal display
+    const collections = {
+      'mens-tailored': [
+        { name: 'Charcoal Wool Suit', price: 1890, icon: 'fas fa-user-tie', category: 'Tailored Essentials' },
+        { name: 'Navy Blazer', price: 945, icon: 'fas fa-vest', category: 'Tailored Essentials' },
+        { name: 'Oxford Dress Shirt', price: 185, icon: 'fas fa-tshirt', category: 'Tailored Essentials' },
+        { name: 'Silk Tie Collection', price: 125, icon: 'fas fa-ribbon', category: 'Tailored Essentials' }
+      ],
+      'mens-outerwear': [
+        { name: 'Cashmere Overcoat', price: 1245, icon: 'fas fa-vest', category: 'Outerwear' },
+        { name: 'Wool Peacoat', price: 795, icon: 'fas fa-vest-patches', category: 'Outerwear' },
+        { name: 'Technical Rain Jacket', price: 485, icon: 'fas fa-wind', category: 'Outerwear' },
+        { name: 'Quilted Bomber', price: 625, icon: 'fas fa-layer-group', category: 'Outerwear' }
+      ],
+      'mens-denim': [
+        { name: 'Selvedge Denim', price: 285, icon: 'fas fa-jeans', category: 'Denim & Casual' },
+        { name: 'Raw Denim Jacket', price: 345, icon: 'fas fa-vest', category: 'Denim & Casual' },
+        { name: 'Slim Fit Chinos', price: 195, icon: 'fas fa-socks', category: 'Denim & Casual' },
+        { name: 'Organic Cotton Tee', price: 85, icon: 'fas fa-tshirt', category: 'Denim & Casual' }
+      ],
+      'mens-footwear': [
+        { name: 'Leather Derby', price: 495, icon: 'fas fa-shoe-prints', category: 'Footwear' },
+        { name: 'Chelsea Boots', price: 575, icon: 'fas fa-hiking', category: 'Footwear' },
+        { name: 'Minimal Sneakers', price: 325, icon: 'fas fa-running', category: 'Footwear' },
+        { name: 'Loafers', price: 445, icon: 'fas fa-shoe-prints', category: 'Footwear' }
+      ],
+      'womens-dresses': [
+        { name: 'Silk Midi Dress', price: 685, icon: 'fas fa-female', category: 'Modern Silhouettes' },
+        { name: 'Linen Shirt Dress', price: 395, icon: 'fas fa-person-dress', category: 'Modern Silhouettes' },
+        { name: 'Wool Pencil Skirt', price: 285, icon: 'fas fa-vest', category: 'Modern Silhouettes' },
+        { name: 'Structured Blazer Dress', price: 745, icon: 'fas fa-user-tie', category: 'Modern Silhouettes' }
+      ],
+      'womens-knitwear': [
+        { name: 'Merino Turtleneck', price: 395, icon: 'fas fa-mitten', category: 'Knitwear' },
+        { name: 'Cashmere Cardigan', price: 645, icon: 'fas fa-vest', category: 'Knitwear' },
+        { name: 'Ribbed Knit Sweater', price: 325, icon: 'fas fa-tshirt', category: 'Knitwear' },
+        { name: 'Cable Knit Pullover', price: 425, icon: 'fas fa-mitten', category: 'Knitwear' }
+      ],
+      'womens-blouses': [
+        { name: 'Organic Cotton Shirt', price: 225, icon: 'fas fa-tshirt', category: 'Blouses & Shirts' },
+        { name: 'Silk Blouse', price: 385, icon: 'fas fa-shirt', category: 'Blouses & Shirts' },
+        { name: 'Linen Button-Up', price: 195, icon: 'fas fa-tshirt', category: 'Blouses & Shirts' },
+        { name: 'Pleated Collar Shirt', price: 275, icon: 'fas fa-shirt', category: 'Blouses & Shirts' }
+      ],
+      'womens-accessories': [
+        { name: 'Minimal Tote', price: 575, icon: 'fas fa-shopping-bag', category: 'Accessories' },
+        { name: 'Silk Scarf', price: 145, icon: 'fas fa-ribbon', category: 'Accessories' },
+        { name: 'Leather Belt', price: 195, icon: 'fas fa-grip-lines', category: 'Accessories' },
+        { name: 'Gold-Plated Necklace', price: 285, icon: 'fas fa-gem', category: 'Accessories' }
+      ]
+    };
+    
+    // Make all product and collection cards clickable
     productCards.forEach(card => {
       card.addEventListener('click', () => {
         const productId = card.dataset.productId;
-        openProductModal(productId);
+        if (productId) {
+          openProductModal(productId);
+        }
       });
     });
+    
+    collectionCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const category = card.dataset.category;
+        if (category && collections[category]) {
+          openCollectionModal(category);
+        }
+      });
+    });
+    
+    // Make lookbook items clickable - open random featured product
+    const lookbookItems = document.querySelectorAll('.lookbook-item');
+    lookbookItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        // Open products 1-6 for lookbook items
+        const productId = (index % 6) + 1;
+        openProductModal(productId.toString());
+      });
+    });
+    
+    function openCollectionModal(category) {
+      const collectionItems = collections[category];
+      const modalContent = document.querySelector('.product-modal .modal-content');
+      
+      // Build collection display
+      let collectionHTML = `
+        <h2 style="font-size: 1.75rem; font-weight: 500; margin-bottom: 1rem; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">${collectionItems[0].category}</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem; font-size: 0.95rem;">Explore our curated selection of premium pieces</p>
+        <div style="display: grid; gap: 1.5rem; margin-bottom: 2rem;">
+      `;
+      
+      collectionItems.forEach((item, index) => {
+        collectionHTML += `
+          <div style="display: flex; gap: 1rem; padding: 1rem; background: #f9f9f9; border-radius: 8px; align-items: center; cursor: pointer; transition: all 0.2s ease;" class="collection-modal-item" data-collection-item="${index}" data-category="${category}">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="${item.icon}" style="font-size: 2rem;"></i>
+            </div>
+            <div style="flex: 1;">
+              <div style="font-weight: 500; font-size: 1rem; margin-bottom: 0.25rem;">${item.name}</div>
+              <div style="color: #666; font-size: 0.875rem;">$${item.price.toLocaleString()}</div>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #999; font-size: 1rem;"></i>
+          </div>
+        `;
+      });
+      
+      collectionHTML += `
+        </div>
+        <button class="modal-btn btn-order" style="width: 100%;" onclick="contactAboutCollection('${category}')">
+          <i class="fab fa-whatsapp"></i> Inquire About Collection
+        </button>
+      `;
+      
+      modalContent.innerHTML = collectionHTML;
+      
+      // Add click handlers to collection items
+      const collectionModalItems = modalContent.querySelectorAll('.collection-modal-item');
+      collectionModalItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const categoryKey = item.dataset.category;
+          const itemIndex = parseInt(item.dataset.collectionItem);
+          const collectionItem = collections[categoryKey][itemIndex];
+          
+          // Create a temporary product object from collection item
+          openCollectionItemModal(collectionItem);
+        });
+        
+        // Add hover effect
+        item.addEventListener('mouseenter', () => {
+          item.style.background = '#f0f0f0';
+          item.style.transform = 'translateX(4px)';
+        });
+        item.addEventListener('mouseleave', () => {
+          item.style.background = '#f9f9f9';
+          item.style.transform = 'translateX(0)';
+        });
+      });
+      
+      productModalOverlay.classList.add('active');
+      productModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    window.contactAboutCollection = function(category) {
+      const collectionItems = collections[category];
+      const collectionName = collectionItems[0].category;
+      const message = `Hi! I'm interested in your ${collectionName} collection. Could you provide more information about these items?\n\n${collectionItems.map(item => `��� ${item.name} - $${item.price.toLocaleString()}`).join('\n')}\n\nThank you!`;
+      const whatsappUrl = `https://wa.me/${defaultConfig.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    };
     
     function openProductModal(productId) {
       selectedProduct = products[productId];
       currentQuantity = 1;
       
-      document.getElementById('modalProductImage').textContent = selectedProduct.icon;
-      document.getElementById('modalProductName').textContent = selectedProduct.name;
-      document.getElementById('modalProductCategory').textContent = selectedProduct.category;
-      document.getElementById('modalProductPrice').textContent = `$${selectedProduct.price.toLocaleString()}`;
-      document.getElementById('modalProductDescription').textContent = selectedProduct.description;
-      document.getElementById('modalMaterial').textContent = selectedProduct.material;
-      document.getElementById('modalSku').textContent = selectedProduct.sku;
-      document.getElementById('quantityValue').textContent = currentQuantity;
+      const modalContent = document.querySelector('.product-modal .modal-content');
       
-      const stockElement = document.getElementById('modalStock');
-      if (selectedProduct.stock > 10) {
-        stockElement.textContent = 'In Stock';
-        stockElement.className = 'detail-value in-stock';
-      } else if (selectedProduct.stock > 0) {
-        stockElement.textContent = `Only ${selectedProduct.stock} left`;
-        stockElement.className = 'detail-value low-stock';
-      } else {
-        stockElement.textContent = 'Out of Stock';
-        stockElement.className = 'detail-value';
-      }
+      modalContent.innerHTML = `
+        <div class="modal-product-image" id="modalProductImage"><i class="${selectedProduct.icon}" style="font-size: 5rem;"></i></div>
+        <h2 class="modal-product-name" id="modalProductName">${selectedProduct.name}</h2>
+        <p class="modal-product-category" id="modalProductCategory">${selectedProduct.category}</p>
+        <p class="modal-product-price" id="modalProductPrice">$${selectedProduct.price.toLocaleString()}</p>
+        
+        <p class="product-description" id="modalProductDescription">
+          ${selectedProduct.description}
+        </p>
+        
+        <div class="product-details">
+          <div class="detail-row">
+            <span class="detail-label">Availability</span>
+            <span class="detail-value ${selectedProduct.stock > 10 ? 'in-stock' : (selectedProduct.stock > 0 ? 'low-stock' : '')}" id="modalStock">${selectedProduct.stock > 10 ? 'In Stock' : (selectedProduct.stock > 0 ? `Only ${selectedProduct.stock} left` : 'Out of Stock')}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Material</span>
+            <span class="detail-value" id="modalMaterial">${selectedProduct.material}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">SKU</span>
+            <span class="detail-value" id="modalSku">${selectedProduct.sku}</span>
+          </div>
+        </div>
+        
+        <div class="quantity-selector">
+          <span class="detail-label">Quantity:</span>
+          <button class="quantity-btn" id="decreaseQty">-</button>
+          <span class="quantity-value" id="quantityValue">${currentQuantity}</span>
+          <button class="quantity-btn" id="increaseQty">+</button>
+        </div>
+        
+        <div class="modal-actions">
+          <button class="modal-btn btn-order" id="orderNowBtn">Order Now</button>
+          <button class="modal-btn btn-cart" id="addToCartBtn">Add to Cart</button>
+        </div>
+      `;
+      
+      // Re-attach event listeners for product modal
+      document.getElementById('decreaseQty').addEventListener('click', () => {
+        if (currentQuantity > 1) {
+          currentQuantity--;
+          document.getElementById('quantityValue').textContent = currentQuantity;
+        }
+      });
+      
+      document.getElementById('increaseQty').addEventListener('click', () => {
+        if (currentQuantity < selectedProduct.stock) {
+          currentQuantity++;
+          document.getElementById('quantityValue').textContent = currentQuantity;
+        }
+      });
+      
+      document.getElementById('addToCartBtn').addEventListener('click', () => {
+        if (selectedProduct && selectedProduct.stock > 0) {
+          const existingItem = cart.find(item => item.name === selectedProduct.name);
+          if (existingItem) {
+            existingItem.quantity += currentQuantity;
+          } else {
+            cart.push({
+              ...selectedProduct,
+              quantity: currentQuantity
+            });
+          }
+          updateCartCount();
+          
+          const btn = document.getElementById('addToCartBtn');
+          const originalText = btn.textContent;
+          btn.textContent = 'Added to Cart ✓';
+          btn.style.background = '#22c55e';
+          btn.style.borderColor = '#22c55e';
+          btn.style.color = '#fff';
+          
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.style.borderColor = '';
+            btn.style.color = '';
+          }, 1500);
+        }
+      });
+      
+      document.getElementById('orderNowBtn').addEventListener('click', () => {
+        if (selectedProduct && selectedProduct.stock > 0) {
+          const message = `Hi! I'd like to order:\n\n${selectedProduct.name}\nQuantity: ${currentQuantity}\nTotal: $${(selectedProduct.price * currentQuantity).toLocaleString()}\n\nPlease let me know the next steps.`;
+          const whatsappUrl = `https://wa.me/${defaultConfig.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
+          window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }
+      });
+      
+      productModalOverlay.classList.add('active');
+      productModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function openCollectionItemModal(collectionItem) {
+      selectedProduct = {
+        name: collectionItem.name,
+        category: collectionItem.category,
+        price: collectionItem.price,
+        icon: collectionItem.icon,
+        stock: 10,
+        material: 'Premium Materials',
+        sku: `ATL-${collectionItem.name.substring(0,3).toUpperCase()}-${Math.floor(Math.random() * 900) + 100}`,
+        description: `Expertly crafted ${collectionItem.name.toLowerCase()} from our ${collectionItem.category} collection. Designed with meticulous attention to detail and made from the finest materials.`
+      };
+      currentQuantity = 1;
+      
+      const modalContent = document.querySelector('.product-modal .modal-content');
+      
+      modalContent.innerHTML = `
+        <div class="modal-product-image" id="modalProductImage"><i class="${selectedProduct.icon}" style="font-size: 5rem;"></i></div>
+        <h2 class="modal-product-name" id="modalProductName">${selectedProduct.name}</h2>
+        <p class="modal-product-category" id="modalProductCategory">${selectedProduct.category}</p>
+        <p class="modal-product-price" id="modalProductPrice">$${selectedProduct.price.toLocaleString()}</p>
+        
+        <p class="product-description" id="modalProductDescription">
+          ${selectedProduct.description}
+        </p>
+        
+        <div class="product-details">
+          <div class="detail-row">
+            <span class="detail-label">Availability</span>
+            <span class="detail-value in-stock" id="modalStock">In Stock</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Material</span>
+            <span class="detail-value" id="modalMaterial">${selectedProduct.material}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">SKU</span>
+            <span class="detail-value" id="modalSku">${selectedProduct.sku}</span>
+          </div>
+        </div>
+        
+        <div class="quantity-selector">
+          <span class="detail-label">Quantity:</span>
+          <button class="quantity-btn" id="decreaseQty">-</button>
+          <span class="quantity-value" id="quantityValue">${currentQuantity}</span>
+          <button class="quantity-btn" id="increaseQty">+</button>
+        </div>
+        
+        <div class="modal-actions">
+          <button class="modal-btn btn-order" id="orderNowBtn">Order Now</button>
+          <button class="modal-btn btn-cart" id="addToCartBtn">Add to Cart</button>
+        </div>
+      `;
+      
+      // Re-attach event listeners
+      document.getElementById('decreaseQty').addEventListener('click', () => {
+        if (currentQuantity > 1) {
+          currentQuantity--;
+          document.getElementById('quantityValue').textContent = currentQuantity;
+        }
+      });
+      
+      document.getElementById('increaseQty').addEventListener('click', () => {
+        if (currentQuantity < selectedProduct.stock) {
+          currentQuantity++;
+          document.getElementById('quantityValue').textContent = currentQuantity;
+        }
+      });
+      
+      document.getElementById('addToCartBtn').addEventListener('click', () => {
+        if (selectedProduct && selectedProduct.stock > 0) {
+          const existingItem = cart.find(item => item.name === selectedProduct.name);
+          if (existingItem) {
+            existingItem.quantity += currentQuantity;
+          } else {
+            cart.push({
+              ...selectedProduct,
+              quantity: currentQuantity
+            });
+          }
+          updateCartCount();
+          
+          const btn = document.getElementById('addToCartBtn');
+          const originalText = btn.textContent;
+          btn.textContent = 'Added to Cart ✓';
+          btn.style.background = '#22c55e';
+          btn.style.borderColor = '#22c55e';
+          btn.style.color = '#fff';
+          
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.style.borderColor = '';
+            btn.style.color = '';
+          }, 1500);
+        }
+      });
+      
+      document.getElementById('orderNowBtn').addEventListener('click', () => {
+        if (selectedProduct && selectedProduct.stock > 0) {
+          const message = `Hi! I'd like to order:\n\n${selectedProduct.name}\nQuantity: ${currentQuantity}\nTotal: $${(selectedProduct.price * currentQuantity).toLocaleString()}\n\nPlease let me know the next steps.`;
+          const whatsappUrl = `https://wa.me/${defaultConfig.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
+          window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }
+      });
       
       productModalOverlay.classList.add('active');
       productModal.classList.add('active');
@@ -1170,65 +1724,86 @@
     function closeProductModal() {
       productModalOverlay.classList.remove('active');
       productModal.classList.remove('active');
-      document.body.style.overflow = '';
+      if (!cartModal.classList.contains('active')) {
+        document.body.style.overflow = '';
+      }
     }
     
-    productModalOverlay.addEventListener('click', closeProductModal);
-    
-    // Quantity controls
-    document.getElementById('decreaseQty').addEventListener('click', () => {
-      if (currentQuantity > 1) {
-        currentQuantity--;
-        document.getElementById('quantityValue').textContent = currentQuantity;
+    productModalOverlay.addEventListener('click', (e) => {
+      if (e.target === productModalOverlay) {
+        closeProductModal();
       }
     });
     
-    document.getElementById('increaseQty').addEventListener('click', () => {
-      if (currentQuantity < selectedProduct.stock) {
-        currentQuantity++;
-        document.getElementById('quantityValue').textContent = currentQuantity;
+    // Drag to close functionality for product modal
+    let startY = 0;
+    let currentY = 0;
+    let isDragging = false;
+    
+    productModalHandle.addEventListener('touchstart', (e) => {
+      startY = e.touches[0].clientY;
+      isDragging = true;
+      productModal.classList.add('dragging');
+    });
+    
+    productModalHandle.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      currentY = e.touches[0].clientY;
+      const diff = currentY - startY;
+      
+      if (diff > 0) {
+        productModal.style.transform = `translateY(${diff}px)`;
       }
     });
     
-    // Add to cart
-    document.getElementById('addToCartBtn').addEventListener('click', () => {
-      if (selectedProduct && selectedProduct.stock > 0) {
-        const existingItem = cart.find(item => item.name === selectedProduct.name);
-        if (existingItem) {
-          existingItem.quantity += currentQuantity;
-        } else {
-          cart.push({
-            ...selectedProduct,
-            quantity: currentQuantity
-          });
-        }
-        updateCartCount();
-        
-        // Show confirmation message
-        const btn = document.getElementById('addToCartBtn');
-        const originalText = btn.textContent;
-        btn.textContent = 'Added to Cart ✓';
-        btn.style.background = '#22c55e';
-        btn.style.borderColor = '#22c55e';
-        btn.style.color = '#fff';
-        
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.style.background = '';
-          btn.style.borderColor = '';
-          btn.style.color = '';
-        }, 1500);
+    productModalHandle.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      productModal.classList.remove('dragging');
+      
+      const diff = currentY - startY;
+      
+      if (diff > 100) {
+        closeProductModal();
+        productModal.style.transform = '';
+      } else {
+        productModal.style.transform = '';
       }
     });
     
-    // Order now
-    document.getElementById('orderNowBtn').addEventListener('click', () => {
-      if (selectedProduct && selectedProduct.stock > 0) {
-        const message = `Hi! I'd like to order:\n\n${selectedProduct.name}\nQuantity: ${currentQuantity}\nTotal: $${(selectedProduct.price * currentQuantity).toLocaleString()}\n\nPlease let me know the next steps.`;
-        const whatsappUrl = `https://wa.me/${defaultConfig.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    // Mouse drag support
+    productModalHandle.addEventListener('mousedown', (e) => {
+      startY = e.clientY;
+      isDragging = true;
+      productModal.classList.add('dragging');
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      currentY = e.clientY;
+      const diff = currentY - startY;
+      
+      if (diff > 0) {
+        productModal.style.transform = `translateY(${diff}px)`;
       }
     });
+    
+    document.addEventListener('mouseup', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      productModal.classList.remove('dragging');
+      
+      const diff = currentY - startY;
+      
+      if (diff > 100) {
+        closeProductModal();
+        productModal.style.transform = '';
+      } else {
+        productModal.style.transform = '';
+      }
+    });
+    
+
     
     // Update cart count
     function updateCartCount() {
@@ -1236,30 +1811,198 @@
       document.getElementById('cartCount').textContent = totalItems;
     }
     
-    // Cart icon click (could expand to show cart modal)
-    document.getElementById('cartIcon').addEventListener('click', () => {
-      if (cart.length === 0) {
-        const message = 'Your cart is empty. Browse our collection and add items!';
-        const cartCount = document.getElementById('cartCount');
-        const originalBg = cartCount.style.background;
-        cartCount.style.background = '#f59e0b';
-        setTimeout(() => {
-          cartCount.style.background = originalBg;
-        }, 500);
-      } else {
-        let cartMessage = 'Your Cart:\n\n';
-        let total = 0;
-        cart.forEach(item => {
-          const itemTotal = item.price * item.quantity;
-          total += itemTotal;
-          cartMessage += `${item.name} x${item.quantity} - $${itemTotal.toLocaleString()}\n`;
-        });
-        cartMessage += `\nTotal: $${total.toLocaleString()}\n\nWould you like to proceed with your order?`;
-        
-        const whatsappUrl = `https://wa.me/${defaultConfig.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(cartMessage)}`;
-        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    // Cart icon click - show cart modal
+    const cartModal = document.getElementById('cartModal');
+    const cartModalOverlay = document.getElementById('cartModalOverlay');
+    const cartModalHandle = document.getElementById('cartModalHandle');
+    
+    document.getElementById('cartIcon').addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      // Close product modal if open
+      closeProductModal();
+      // Close mobile menu if open
+      closeMobileMenu();
+      renderCart();
+      cartModalOverlay.classList.add('active');
+      cartModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    function closeCartModal() {
+      cartModalOverlay.classList.remove('active');
+      cartModal.classList.remove('active');
+      if (!productModal.classList.contains('active')) {
+        document.body.style.overflow = '';
+      }
+    }
+    
+    cartModalOverlay.addEventListener('click', (e) => {
+      if (e.target === cartModalOverlay) {
+        closeCartModal();
       }
     });
+    
+    // Drag to close functionality for cart modal
+    let cartStartY = 0;
+    let cartCurrentY = 0;
+    let isCartDragging = false;
+    
+    cartModalHandle.addEventListener('touchstart', (e) => {
+      cartStartY = e.touches[0].clientY;
+      isCartDragging = true;
+      cartModal.classList.add('dragging');
+    });
+    
+    cartModalHandle.addEventListener('touchmove', (e) => {
+      if (!isCartDragging) return;
+      cartCurrentY = e.touches[0].clientY;
+      const diff = cartCurrentY - cartStartY;
+      
+      if (diff > 0) {
+        cartModal.style.transform = `translateY(${diff}px)`;
+      }
+    });
+    
+    cartModalHandle.addEventListener('touchend', (e) => {
+      if (!isCartDragging) return;
+      isCartDragging = false;
+      cartModal.classList.remove('dragging');
+      
+      const diff = cartCurrentY - cartStartY;
+      
+      if (diff > 100) {
+        closeCartModal();
+        cartModal.style.transform = '';
+      } else {
+        cartModal.style.transform = '';
+      }
+    });
+    
+    // Mouse drag for cart
+    cartModalHandle.addEventListener('mousedown', (e) => {
+      cartStartY = e.clientY;
+      isCartDragging = true;
+      cartModal.classList.add('dragging');
+      e.preventDefault();
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+      if (!isCartDragging) return;
+      cartCurrentY = e.clientY;
+      const diff = cartCurrentY - cartStartY;
+      
+      if (diff > 0) {
+        cartModal.style.transform = `translateY(${diff}px)`;
+      }
+    });
+    
+    document.addEventListener('mouseup', (e) => {
+      if (!isCartDragging) return;
+      isCartDragging = false;
+      cartModal.classList.remove('dragging');
+      
+      const diff = cartCurrentY - cartStartY;
+      
+      if (diff > 100) {
+        closeCartModal();
+      }
+      cartModal.style.transform = '';
+    });
+    
+    function renderCart() {
+      const container = document.getElementById('cartItemsContainer');
+      
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="empty-cart">
+            <i class="fas fa-shopping-bag"></i>
+            <p style="font-size: 1rem; margin-top: 1rem;">Your cart is empty</p>
+            <p style="font-size: 0.875rem; color: #999; margin-top: 0.5rem;">Add some items to get started!</p>
+          </div>
+        `;
+        return;
+      }
+      
+      let total = 0;
+      let itemsHTML = '';
+      
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        
+        itemsHTML += `
+          <div class="cart-item">
+            <div class="cart-item-icon">
+              <i class="${item.icon}" style="font-size: 2.5rem;"></i>
+            </div>
+            <div class="cart-item-details">
+              <div class="cart-item-name">${item.name}</div>
+              <div class="cart-item-price">$${item.price.toLocaleString()} each</div>
+              <div class="cart-item-quantity">
+                <button class="cart-qty-btn" onclick="updateCartQuantity(${index}, -1)">-</button>
+                <span style="min-width: 30px; text-align: center;">${item.quantity}</span>
+                <button class="cart-qty-btn" onclick="updateCartQuantity(${index}, 1)">+</button>
+                <span style="flex: 1;"></span>
+                <button class="cart-remove-btn" onclick="removeFromCart(${index})">
+                  <i class="fas fa-trash"></i> Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      container.innerHTML = `
+        ${itemsHTML}
+        <div class="cart-summary">
+          <div class="cart-total">
+            <span>Total:</span>
+            <span>$${total.toLocaleString()}</span>
+          </div>
+          <button class="cart-checkout-btn" onclick="checkoutCart()">
+            <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+          </button>
+        </div>
+      `;
+    }
+    
+    window.updateCartQuantity = function(index, change) {
+      if (cart[index].quantity + change <= 0) {
+        removeFromCart(index);
+        return;
+      }
+      
+      if (cart[index].quantity + change > cart[index].stock) {
+        return;
+      }
+      
+      cart[index].quantity += change;
+      updateCartCount();
+      renderCart();
+    };
+    
+    window.removeFromCart = function(index) {
+      cart.splice(index, 1);
+      updateCartCount();
+      renderCart();
+    };
+    
+    window.checkoutCart = function() {
+      let cartMessage = '🛍️ *My Order*\n\n';
+      let total = 0;
+      
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        cartMessage += `• ${item.name}\n  Qty: ${item.quantity} × $${item.price.toLocaleString()} = $${itemTotal.toLocaleString()}\n\n`;
+      });
+      
+      cartMessage += `*Total: $${total.toLocaleString()}*\n\nI'd like to proceed with this order. Please let me know the next steps!`;
+      
+      const whatsappUrl = `https://wa.me/${defaultConfig.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(cartMessage)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    };
 
     async function onConfigChange(config) {
       const customFont = config.font_family || defaultConfig.font_family;
@@ -1470,5 +2213,5 @@
       });
     }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b81f55dd7d7c13d',t:'MTc2NzQzNzY3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b823577853ec13d',t:'MTc2NzQ0MDI5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
