@@ -1,0 +1,1474 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Fashion Brand</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1a1a1a;
+      background: #fafafa;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .main-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    
+    .serif-font {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    
+    /* Navigation */
+    .nav-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 250, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link {
+      position: relative;
+      color: #1a1a1a;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #1a1a1a;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+    }
+    
+    .mobile-menu-btn span {
+      width: 24px;
+      height: 2px;
+      background: #1a1a1a;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+    
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+    
+    .desktop-nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 76px;
+      left: 0;
+      right: 0;
+      background: rgba(250, 250, 250, 0.98);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      flex-direction: column;
+      gap: 1.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .mobile-nav.active {
+      display: flex;
+    }
+    
+    .mobile-nav .nav-link {
+      font-size: 1rem;
+      text-align: center;
+      padding: 0.5rem 0;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+    }
+    
+    .hero-headline {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      color: #666;
+      margin-bottom: 3rem;
+      max-width: 600px;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: #1a1a1a;
+      color: #fafafa;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border: 2px solid #1a1a1a;
+    }
+    
+    .cta-button:hover {
+      background: transparent;
+      color: #1a1a1a;
+      transform: translateY(-2px);
+    }
+    
+    /* Collection Cards */
+    .collection-card {
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      cursor: pointer;
+      transition: transform 0.5s ease;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    .collection-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .collection-image {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #e8e8e8 0%, #d4d4d4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      transition: transform 0.5s ease;
+      position: relative;
+    }
+    
+    .collection-card:hover .collection-image {
+      transform: scale(1.05);
+    }
+    
+    .collection-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+      color: #fff;
+    }
+    
+    .collection-title {
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .collection-description {
+      font-size: 0.875rem;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+    
+    .product-card {
+      background: #fff;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .product-image {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(26, 26, 26, 0.9);
+      color: #fff;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    
+    .product-info {
+      padding: 1.5rem;
+    }
+    
+    .product-name {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    
+    .product-category {
+      font-size: 0.875rem;
+      color: #666;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+    
+    .product-price {
+      font-size: 1.125rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Lookbook Grid */
+    .lookbook-item {
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      aspect-ratio: 1;
+      transition: transform 0.3s ease;
+    }
+    
+    .lookbook-item:hover {
+      transform: translateY(-4px);
+    }
+    
+    .lookbook-image {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    
+    /* About Section */
+    .about-section {
+      background: #fff;
+      padding: 8rem 1.5rem;
+    }
+    
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .about-headline {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+    
+    .about-text {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: #666;
+      font-weight: 300;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      background: #1a1a1a;
+      color: #fafafa;
+      padding: 6rem 1.5rem;
+    }
+    
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: #fafafa;
+      border: 1px solid rgba(250, 250, 250, 0.3);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+      white-space: nowrap;
+    }
+    
+    .contact-button:hover {
+      background: #fafafa;
+      color: #1a1a1a;
+      border-color: #fafafa;
+      transform: translateY(-2px);
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(250, 250, 250, 0.3);
+      color: #fafafa;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+    
+    .social-icon:hover {
+      background: #fafafa;
+      color: #1a1a1a;
+      border-color: #fafafa;
+      transform: translateY(-2px);
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .footer-section h3 {
+      font-size: 0.875rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      color: rgba(250, 250, 250, 0.6);
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .footer-link {
+      color: #fafafa;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 300;
+      transition: opacity 0.3s ease;
+    }
+    
+    .footer-link:hover {
+      opacity: 0.7;
+    }
+    
+    /* Section Spacing */
+    .section-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem;
+    }
+    
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    /* Responsive Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    
+    /* Cart Icon */
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+    }
+    
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #1a1a1a;
+      color: #fafafa;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 50%;
+      min-width: 18px;
+      text-align: center;
+    }
+    
+    /* Product Modal */
+    .product-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .product-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .product-modal {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      z-index: 1001;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .product-modal.active {
+      transform: translateY(0);
+    }
+    
+    .modal-handle {
+      width: 40px;
+      height: 4px;
+      background: #ddd;
+      border-radius: 2px;
+      margin: 1rem auto 0.5rem;
+    }
+    
+    .modal-content {
+      padding: 1.5rem;
+    }
+    
+    .modal-product-image {
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+    }
+    
+    .modal-product-name {
+      font-size: 1.75rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    
+    .modal-product-category {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+    
+    .modal-product-price {
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+    
+    .product-details {
+      margin-bottom: 2rem;
+    }
+    
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid #eee;
+      font-size: 0.95rem;
+    }
+    
+    .detail-label {
+      color: #666;
+      font-weight: 400;
+    }
+    
+    .detail-value {
+      font-weight: 500;
+    }
+    
+    .in-stock {
+      color: #22c55e;
+    }
+    
+    .low-stock {
+      color: #f59e0b;
+    }
+    
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .quantity-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #ddd;
+      background: #fff;
+      cursor: pointer;
+      font-size: 1.25rem;
+      transition: all 0.2s ease;
+    }
+    
+    .quantity-btn:hover {
+      background: #f5f5f5;
+    }
+    
+    .quantity-value {
+      font-size: 1.125rem;
+      font-weight: 500;
+      min-width: 40px;
+      text-align: center;
+    }
+    
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .modal-btn {
+      flex: 1;
+      padding: 1rem 2rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: 2px solid #1a1a1a;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-order {
+      background: #1a1a1a;
+      color: #fafafa;
+    }
+    
+    .btn-order:hover {
+      background: transparent;
+      color: #1a1a1a;
+    }
+    
+    .btn-cart {
+      background: transparent;
+      color: #1a1a1a;
+    }
+    
+    .btn-cart:hover {
+      background: #1a1a1a;
+      color: #fafafa;
+    }
+    
+    .product-description {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-section {
+        min-height: 80vh;
+        padding: 3rem 1rem;
+      }
+      
+      .section-container {
+        padding: 4rem 1rem;
+      }
+      
+      .about-section {
+        padding: 5rem 1rem;
+      }
+      
+      .contact-section {
+        padding: 4rem 1rem;
+      }
+      
+      .nav-sticky {
+        padding: 1rem;
+      }
+      
+      .nav-link {
+        font-size: 0.75rem;
+      }
+      
+      .desktop-nav {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: flex;
+      }
+      
+      .collection-title {
+        font-size: 1.5rem;
+      }
+      
+      .collection-overlay {
+        padding: 1.5rem;
+      }
+      
+      .product-info {
+        padding: 1.25rem;
+      }
+      
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .contact-button {
+        width: 100%;
+        justify-content: center;
+        margin: 0.5rem 0;
+      }
+      
+      .modal-actions {
+        flex-direction: column;
+      }
+      
+      .modal-btn {
+        width: 100%;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div class="main-wrapper"><!-- Navigation -->
+   <nav class="nav-sticky">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 1.5rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+     <div class="serif-font" style="font-size: 1.5rem; font-weight: 500; letter-spacing: -0.5px;">
+      ATELIER
+     </div>
+     <div style="display: flex; align-items: center; gap: 1.5rem;">
+      <div class="desktop-nav"><a href="#mens" class="nav-link">Men</a> <a href="#womens" class="nav-link">Women</a> <a href="#lookbook" class="nav-link">Lookbook</a> <a href="#featured" class="nav-link">Featured</a> <a href="#about" class="nav-link">About</a> <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="cart-icon" id="cartIcon">
+       🛒 <span class="cart-count" id="cartCount">0</span>
+      </div>
+      <div class="mobile-menu-btn" id="mobileMenuBtn"><span></span> <span></span> <span></span>
+      </div>
+     </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav"><a href="#mens" class="nav-link">Men</a> <a href="#womens" class="nav-link">Women</a> <a href="#lookbook" class="nav-link">Lookbook</a> <a href="#featured" class="nav-link">Featured</a> <a href="#about" class="nav-link">About</a> <a href="#contact" class="nav-link">Contact</a>
+    </div>
+   </nav><!-- Hero Section -->
+   <section class="hero-section">
+    <div style="text-align: center; max-width: 900px;">
+     <h1 class="hero-headline serif-font" id="hero-headline">Timeless Elegance</h1>
+     <p class="hero-tagline" id="hero-tagline">Where minimalism meets luxury. Discover pieces that transcend seasons and define sophistication.</p><a href="#lookbook" class="cta-button" id="hero-cta">Explore Collection</a>
+    </div>
+   </section><!-- Men's Collection -->
+   <section id="mens" class="section-container">
+    <h2 class="section-title serif-font" id="mens-title">Men's Collection</h2>
+    <div class="grid-2" style="margin-bottom: 4rem;">
+     <div class="collection-card">
+      <div class="collection-image">
+       👔
+      </div>
+      <div class="collection-overlay">
+       <h3 class="collection-title">Tailored Essentials</h3>
+       <p class="collection-description">Impeccably crafted suits, blazers, and dress shirts designed for the modern professional. Each piece combines Italian tailoring traditions with contemporary silhouettes.</p>
+      </div>
+     </div>
+     <div class="collection-card">
+      <div class="collection-image">
+       🧥
+      </div>
+      <div class="collection-overlay">
+       <h3 class="collection-title">Outerwear</h3>
+       <p class="collection-description">Elevated everyday pieces featuring premium wool coats, technical jackets, and timeless trench designs. Engineered for all seasons.</p>
+      </div>
+     </div>
+    </div>
+    <div class="grid-2">
+     <div class="collection-card">
+      <div class="collection-image">
+       👖
+      </div>
+      <div class="collection-overlay">
+       <h3 class="collection-title">Denim &amp; Casual</h3>
+       <p class="collection-description">Premium Japanese selvedge denim and refined casual wear. The perfect balance between comfort and sophistication.</p>
+      </div>
+     </div>
+     <div class="collection-card">
+      <div class="collection-image">
+       👞
+      </div>
+      <div class="collection-overlay">
+       <h3 class="collection-title">Footwear</h3>
+       <p class="collection-description">Hand-finished leather shoes, minimalist sneakers, and boots crafted by master artisans. Designed to age beautifully.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Women's Collection -->
+   <section id="womens" class="section-container" style="background: #fff;">
+    <h2 class="section-title serif-font" id="womens-title">Women's Collection</h2>
+    <div class="grid-2" style="margin-bottom: 4rem;">
+     <div class="collection-card">
+      <div class="collection-image">
+       👗
+      </div>
+      <div class="collection-overlay">
+       <h3 class="collection-title">Modern Silhouettes</h3>
+       <p class="collection-description">Architectural dresses and sculptural separates that celebrate feminine strength. Cut from luxurious fabrics with meticulous attention to fit and drape.</p>
+      </div>
+     </div>
+     <div class="collection-card">
+      <div class="collection-image">
+       🧶
+      </div>
+      <div class="collection-overlay">
+       <h3 class="collection-title">Knitwear</h3>
+       <p class="collection-description">Sumptuous cashmere, merino wool, and organic cotton pieces. Timeless comfort engineered with innovative techniques for lasting quality.</p>
+      </div>
+     </div>
+    </div>
+    <div class="grid-2">
+     <div class="collection-card">
+      <div class="collection-image">
+       👚
+      </div>
+      <div class="collection-overlay">
+       <h3 class="collection-title">Blouses &amp; Shirts</h3>
+       <p class="collection-description">Refined tops in silk, organic cotton, and linen. Versatile pieces that transition effortlessly from boardroom to evening.</p>
+      </div>
+     </div>
+     <div class="collection-card">
+      <div class="collection-image">
+       👜
+      </div>
+      <div class="collection-overlay">
+       <h3 class="collection-title">Accessories</h3>
+       <p class="collection-description">Handcrafted leather goods, statement jewelry, and silk scarves. The finishing touches that define your personal style.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Lookbook -->
+   <section id="lookbook" class="section-container">
+    <h2 class="section-title serif-font">Featured Lookbook</h2>
+    <p style="text-align: center; max-width: 600px; margin: -2rem auto 4rem; font-size: 1rem; color: #666; font-weight: 300; line-height: 1.6;">Explore our latest editorial showcasing the art of modern dressing. Each look tells a story of refined simplicity.</p>
+    <div class="grid-3">
+     <div class="lookbook-item">
+      <div class="lookbook-image">
+       🖤
+      </div>
+     </div>
+     <div class="lookbook-item">
+      <div class="lookbook-image">
+       🤍
+      </div>
+     </div>
+     <div class="lookbook-item">
+      <div class="lookbook-image">
+       🤎
+      </div>
+     </div>
+     <div class="lookbook-item">
+      <div class="lookbook-image">
+       💼
+      </div>
+     </div>
+     <div class="lookbook-item">
+      <div class="lookbook-image">
+       👜
+      </div>
+     </div>
+     <div class="lookbook-item">
+      <div class="lookbook-image">
+       👞
+      </div>
+     </div>
+    </div>
+   </section><!-- Featured Products -->
+   <section id="featured" class="section-container" style="background: #fff;">
+    <h2 class="section-title serif-font">Featured This Season</h2>
+    <p style="text-align: center; max-width: 600px; margin: -2rem auto 4rem; font-size: 1rem; color: #666; font-weight: 300; line-height: 1.6;">Handpicked pieces that define our aesthetic. Investment-worthy designs created to become wardrobe cornerstones.</p>
+    <div class="grid-4">
+     <div class="product-card" data-product-id="1" style="cursor: pointer;">
+      <div class="product-image">
+       <div class="product-badge">
+        New
+       </div> 🧥
+      </div>
+      <div class="product-info">
+       <h3 class="product-name">Cashmere Overcoat</h3>
+       <p class="product-category">Outerwear</p>
+       <p class="product-price">$1,245</p>
+      </div>
+     </div>
+     <div class="product-card" data-product-id="2" style="cursor: pointer;">
+      <div class="product-image">
+       <div class="product-badge">
+        Bestseller
+       </div> 👔
+      </div>
+      <div class="product-info">
+       <h3 class="product-name">Italian Wool Suit</h3>
+       <p class="product-category">Tailoring</p>
+       <p class="product-price">$1,890</p>
+      </div>
+     </div>
+     <div class="product-card" data-product-id="3" style="cursor: pointer;">
+      <div class="product-image">
+       👗
+      </div>
+      <div class="product-info">
+       <h3 class="product-name">Silk Midi Dress</h3>
+       <p class="product-category">Dresses</p>
+       <p class="product-price">$685</p>
+      </div>
+     </div>
+     <div class="product-card" data-product-id="4" style="cursor: pointer;">
+      <div class="product-image">
+       <div class="product-badge">
+        Limited
+       </div> 🧶
+      </div>
+      <div class="product-info">
+       <h3 class="product-name">Merino Turtleneck</h3>
+       <p class="product-category">Knitwear</p>
+       <p class="product-price">$395</p>
+      </div>
+     </div>
+     <div class="product-card" data-product-id="5" style="cursor: pointer;">
+      <div class="product-image">
+       👖
+      </div>
+      <div class="product-info">
+       <h3 class="product-name">Selvedge Denim</h3>
+       <p class="product-category">Denim</p>
+       <p class="product-price">$285</p>
+      </div>
+     </div>
+     <div class="product-card" data-product-id="6" style="cursor: pointer;">
+      <div class="product-image">
+       <div class="product-badge">
+        New
+       </div> 👚
+      </div>
+      <div class="product-info">
+       <h3 class="product-name">Organic Cotton Shirt</h3>
+       <p class="product-category">Shirts</p>
+       <p class="product-price">$225</p>
+      </div>
+     </div>
+     <div class="product-card" data-product-id="7" style="cursor: pointer;">
+      <div class="product-image">
+       👞
+      </div>
+      <div class="product-info">
+       <h3 class="product-name">Leather Derby</h3>
+       <p class="product-category">Footwear</p>
+       <p class="product-price">$495</p>
+      </div>
+     </div>
+     <div class="product-card" data-product-id="8" style="cursor: pointer;">
+      <div class="product-image">
+       <div class="product-badge">
+        Bestseller
+       </div> 👜
+      </div>
+      <div class="product-info">
+       <h3 class="product-name">Minimal Tote</h3>
+       <p class="product-category">Accessories</p>
+       <p class="product-price">$575</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="about-section">
+    <div class="about-content">
+     <h2 class="about-headline serif-font" id="about-headline">Crafted for the Modern Individual</h2>
+     <p class="about-text" id="about-text">Born from a passion for timeless design and exceptional craftsmanship, our brand represents the intersection of contemporary minimalism and enduring elegance. Each piece is thoughtfully designed to empower confidence and celebrate individuality, transcending trends to become wardrobe staples for years to come.</p>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="contact-section">
+    <div style="max-width: 1200px; margin: 0 auto;">
+     <h2 class="section-title serif-font" style="color: #fafafa; margin-bottom: 3rem; text-align: center;" id="contact-headline">Get In Touch</h2>
+     <div class="footer-grid">
+      <div class="footer-section">
+       <h3>Contact</h3>
+       <div class="footer-links"><a href="tel:+15551234567" class="footer-link" id="footer-phone">📞 <span id="phone-display">+1 (555) 123-4567</span></a> <a href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" class="footer-link" id="footer-whatsapp">💬 WhatsApp</a> <a href="mailto:hello@atelier.com" class="footer-link" id="footer-email">✉️ <span id="email-display">hello@atelier.com</span></a>
+       </div>
+      </div>
+      <div class="footer-section">
+       <h3>Shop</h3>
+       <div class="footer-links"><a href="#mens" class="footer-link">Men's Collection</a> <a href="#womens" class="footer-link">Women's Collection</a> <a href="#lookbook" class="footer-link">Lookbook</a> <a href="#featured" class="footer-link">Featured Products</a>
+       </div>
+      </div>
+      <div class="footer-section">
+       <h3>About</h3>
+       <div class="footer-links"><a href="#about" class="footer-link">Our Story</a> <a href="#" class="footer-link">Sustainability</a> <a href="#" class="footer-link">Craftsmanship</a> <a href="#" class="footer-link">Size Guide</a>
+       </div>
+      </div>
+      <div class="footer-section">
+       <h3>Follow Us</h3>
+       <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;"><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">📷</a> <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok">🎵</a> <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X">𝕏</a> <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">💼</a>
+       </div>
+      </div>
+     </div>
+     <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(250, 250, 250, 0.2); text-align: center;">
+      <p style="font-size: 0.75rem; color: rgba(250, 250, 250, 0.5); letter-spacing: 0.5px;">© 2024 ATELIER. All rights reserved.</p>
+     </div>
+    </div>
+   </section><!-- Product Modal -->
+   <div class="product-modal-overlay" id="productModalOverlay"></div>
+   <div class="product-modal" id="productModal">
+    <div class="modal-handle"></div>
+    <div class="modal-content">
+     <div class="modal-product-image" id="modalProductImage">
+      🧥
+     </div>
+     <h2 class="modal-product-name" id="modalProductName">Product Name</h2>
+     <p class="modal-product-category" id="modalProductCategory">Category</p>
+     <p class="modal-product-price" id="modalProductPrice">$0</p>
+     <p class="product-description" id="modalProductDescription">Crafted from the finest materials with meticulous attention to detail. This piece represents the pinnacle of contemporary design and timeless elegance.</p>
+     <div class="product-details">
+      <div class="detail-row"><span class="detail-label">Availability</span> <span class="detail-value" id="modalStock">In Stock</span>
+      </div>
+      <div class="detail-row"><span class="detail-label">Material</span> <span class="detail-value" id="modalMaterial">Premium Fabric</span>
+      </div>
+      <div class="detail-row"><span class="detail-label">SKU</span> <span class="detail-value" id="modalSku">ATL-001</span>
+      </div>
+     </div>
+     <div class="quantity-selector"><span class="detail-label">Quantity:</span> <button class="quantity-btn" id="decreaseQty">-</button> <span class="quantity-value" id="quantityValue">1</span> <button class="quantity-btn" id="increaseQty">+</button>
+     </div>
+     <div class="modal-actions"><button class="modal-btn btn-order" id="orderNowBtn">Order Now</button> <button class="modal-btn btn-cart" id="addToCartBtn">Add to Cart</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: "#fafafa",
+      surface_color: "#ffffff",
+      text_color: "#1a1a1a",
+      primary_action_color: "#1a1a1a",
+      accent_color: "#666666",
+      font_family: "Inter",
+      font_size: 16,
+      hero_headline: "Timeless Elegance",
+      hero_tagline: "Where minimalism meets luxury. Discover pieces that transcend seasons and define sophistication.",
+      hero_cta: "Explore Collection",
+      mens_title: "Men's Collection",
+      womens_title: "Women's Collection",
+      about_headline: "Crafted for the Modern Individual",
+      about_text: "Born from a passion for timeless design and exceptional craftsmanship, our brand represents the intersection of contemporary minimalism and enduring elegance. Each piece is thoughtfully designed to empower confidence and celebrate individuality, transcending trends to become wardrobe staples for years to come.",
+      contact_headline: "Get In Touch",
+      phone_number: "+1 (555) 123-4567",
+      whatsapp_number: "+15551234567",
+      email_address: "hello@atelier.com"
+    };
+    
+    // Product data
+    const products = {
+      1: { name: "Cashmere Overcoat", category: "Outerwear", price: 1245, icon: "🧥", stock: 15, material: "100% Cashmere", sku: "ATL-OUT-001", description: "Luxuriously soft cashmere overcoat with a timeless silhouette. Fully lined with Italian cupro, featuring horn buttons and hand-finished details." },
+      2: { name: "Italian Wool Suit", category: "Tailoring", price: 1890, icon: "👔", stock: 8, material: "Italian Wool", sku: "ATL-SUT-002", description: "Impeccably tailored two-piece suit crafted from Super 120s Italian wool. Features natural shoulder construction and functional buttonholes." },
+      3: { name: "Silk Midi Dress", category: "Dresses", price: 685, icon: "👗", stock: 12, material: "Pure Silk", sku: "ATL-DRS-003", description: "Elegant midi dress in flowing silk charmeuse. Features a cowl neckline and bias-cut construction for a flattering drape." },
+      4: { name: "Merino Turtleneck", category: "Knitwear", price: 395, icon: "🧶", stock: 5, material: "Merino Wool", sku: "ATL-KNT-004", description: "Classic turtleneck sweater in fine-gauge merino wool. Lightweight yet warm with a refined finish. Limited edition colorway." },
+      5: { name: "Selvedge Denim", category: "Denim", price: 285, icon: "👖", stock: 20, material: "Japanese Selvedge", sku: "ATL-DEN-005", description: "Premium selvedge denim from a renowned Japanese mill. Unwashed raw denim that ages beautifully with wear." },
+      6: { name: "Organic Cotton Shirt", category: "Shirts", price: 225, icon: "👚", stock: 18, material: "Organic Cotton", sku: "ATL-SHT-006", description: "Crisp button-down shirt in certified organic cotton poplin. Mother-of-pearl buttons and French seam construction." },
+      7: { name: "Leather Derby", category: "Footwear", price: 495, icon: "👞", stock: 10, material: "Italian Leather", sku: "ATL-FOT-007", description: "Hand-finished derby shoes in vegetable-tanned Italian leather. Goodyear welted with leather soles for durability." },
+      8: { name: "Minimal Tote", category: "Accessories", price: 575, icon: "👜", stock: 14, material: "Full-Grain Leather", sku: "ATL-ACC-008", description: "Spacious tote bag in full-grain leather. Unlined interior with internal pocket. Develops rich patina over time." }
+    };
+    
+    // Cart management
+    let cart = [];
+    let currentQuantity = 1;
+    let selectedProduct = null;
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenuBtn.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking a link
+    const mobileNavLinks = mobileNav.querySelectorAll('.nav-link');
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        mobileNav.classList.remove('active');
+      });
+    });
+    
+    // Product modal functionality
+    const productModal = document.getElementById('productModal');
+    const productModalOverlay = document.getElementById('productModalOverlay');
+    const productCards = document.querySelectorAll('.product-card');
+    
+    productCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const productId = card.dataset.productId;
+        openProductModal(productId);
+      });
+    });
+    
+    function openProductModal(productId) {
+      selectedProduct = products[productId];
+      currentQuantity = 1;
+      
+      document.getElementById('modalProductImage').textContent = selectedProduct.icon;
+      document.getElementById('modalProductName').textContent = selectedProduct.name;
+      document.getElementById('modalProductCategory').textContent = selectedProduct.category;
+      document.getElementById('modalProductPrice').textContent = `$${selectedProduct.price.toLocaleString()}`;
+      document.getElementById('modalProductDescription').textContent = selectedProduct.description;
+      document.getElementById('modalMaterial').textContent = selectedProduct.material;
+      document.getElementById('modalSku').textContent = selectedProduct.sku;
+      document.getElementById('quantityValue').textContent = currentQuantity;
+      
+      const stockElement = document.getElementById('modalStock');
+      if (selectedProduct.stock > 10) {
+        stockElement.textContent = 'In Stock';
+        stockElement.className = 'detail-value in-stock';
+      } else if (selectedProduct.stock > 0) {
+        stockElement.textContent = `Only ${selectedProduct.stock} left`;
+        stockElement.className = 'detail-value low-stock';
+      } else {
+        stockElement.textContent = 'Out of Stock';
+        stockElement.className = 'detail-value';
+      }
+      
+      productModalOverlay.classList.add('active');
+      productModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeProductModal() {
+      productModalOverlay.classList.remove('active');
+      productModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    productModalOverlay.addEventListener('click', closeProductModal);
+    
+    // Quantity controls
+    document.getElementById('decreaseQty').addEventListener('click', () => {
+      if (currentQuantity > 1) {
+        currentQuantity--;
+        document.getElementById('quantityValue').textContent = currentQuantity;
+      }
+    });
+    
+    document.getElementById('increaseQty').addEventListener('click', () => {
+      if (currentQuantity < selectedProduct.stock) {
+        currentQuantity++;
+        document.getElementById('quantityValue').textContent = currentQuantity;
+      }
+    });
+    
+    // Add to cart
+    document.getElementById('addToCartBtn').addEventListener('click', () => {
+      if (selectedProduct && selectedProduct.stock > 0) {
+        const existingItem = cart.find(item => item.name === selectedProduct.name);
+        if (existingItem) {
+          existingItem.quantity += currentQuantity;
+        } else {
+          cart.push({
+            ...selectedProduct,
+            quantity: currentQuantity
+          });
+        }
+        updateCartCount();
+        
+        // Show confirmation message
+        const btn = document.getElementById('addToCartBtn');
+        const originalText = btn.textContent;
+        btn.textContent = 'Added to Cart ✓';
+        btn.style.background = '#22c55e';
+        btn.style.borderColor = '#22c55e';
+        btn.style.color = '#fff';
+        
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }, 1500);
+      }
+    });
+    
+    // Order now
+    document.getElementById('orderNowBtn').addEventListener('click', () => {
+      if (selectedProduct && selectedProduct.stock > 0) {
+        const message = `Hi! I'd like to order:\n\n${selectedProduct.name}\nQuantity: ${currentQuantity}\nTotal: $${(selectedProduct.price * currentQuantity).toLocaleString()}\n\nPlease let me know the next steps.`;
+        const whatsappUrl = `https://wa.me/${defaultConfig.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      }
+    });
+    
+    // Update cart count
+    function updateCartCount() {
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    }
+    
+    // Cart icon click (could expand to show cart modal)
+    document.getElementById('cartIcon').addEventListener('click', () => {
+      if (cart.length === 0) {
+        const message = 'Your cart is empty. Browse our collection and add items!';
+        const cartCount = document.getElementById('cartCount');
+        const originalBg = cartCount.style.background;
+        cartCount.style.background = '#f59e0b';
+        setTimeout(() => {
+          cartCount.style.background = originalBg;
+        }, 500);
+      } else {
+        let cartMessage = 'Your Cart:\n\n';
+        let total = 0;
+        cart.forEach(item => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+          cartMessage += `${item.name} x${item.quantity} - $${itemTotal.toLocaleString()}\n`;
+        });
+        cartMessage += `\nTotal: $${total.toLocaleString()}\n\nWould you like to proceed with your order?`;
+        
+        const whatsappUrl = `https://wa.me/${defaultConfig.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(cartMessage)}`;
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      }
+    });
+
+    async function onConfigChange(config) {
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      const baseFontStack = '-apple-system, BlinkMacSystemFont, sans-serif';
+      const serifStack = 'Georgia, serif';
+      
+      // Apply colors
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      
+      document.body.style.background = backgroundColor;
+      document.body.style.color = textColor;
+      
+      const mainWrapper = document.querySelector('.main-wrapper');
+      mainWrapper.style.background = backgroundColor;
+      
+      // Navigation
+      const navSticky = document.querySelector('.nav-sticky');
+      navSticky.style.background = `rgba(${parseInt(backgroundColor.slice(1,3), 16)}, ${parseInt(backgroundColor.slice(3,5), 16)}, ${parseInt(backgroundColor.slice(5,7), 16)}, 0.95)`;
+      
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.style.color = textColor;
+      });
+      
+      // Hero section
+      const heroSection = document.querySelector('.hero-section');
+      heroSection.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${surfaceColor} 100%)`;
+      
+      // CTA button
+      const ctaButton = document.querySelector('.cta-button');
+      ctaButton.style.background = primaryActionColor;
+      ctaButton.style.borderColor = primaryActionColor;
+      ctaButton.style.color = backgroundColor;
+      
+      // Collection overlays
+      const collectionTitles = document.querySelectorAll('.collection-title');
+      collectionTitles.forEach(title => {
+        title.style.color = backgroundColor;
+      });
+      
+      // About section
+      const aboutSection = document.querySelector('.about-section');
+      aboutSection.style.background = surfaceColor;
+      
+      const aboutText = document.getElementById('about-text');
+      aboutText.style.color = accentColor;
+      
+      // Contact section
+      const contactSection = document.querySelector('.contact-section');
+      contactSection.style.background = primaryActionColor;
+      contactSection.style.color = backgroundColor;
+      
+      const contactButtons = document.querySelectorAll('.contact-button');
+      contactButtons.forEach(button => {
+        button.style.color = backgroundColor;
+        button.style.borderColor = `rgba(${parseInt(backgroundColor.slice(1,3), 16)}, ${parseInt(backgroundColor.slice(3,5), 16)}, ${parseInt(backgroundColor.slice(5,7), 16)}, 0.3)`;
+      });
+      
+      const socialIcons = document.querySelectorAll('.social-icon');
+      socialIcons.forEach(icon => {
+        icon.style.color = backgroundColor;
+        icon.style.borderColor = `rgba(${parseInt(backgroundColor.slice(1,3), 16)}, ${parseInt(backgroundColor.slice(3,5), 16)}, ${parseInt(backgroundColor.slice(5,7), 16)}, 0.3)`;
+      });
+      
+      // Apply fonts
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      
+      const serifElements = document.querySelectorAll('.serif-font');
+      serifElements.forEach(el => {
+        el.style.fontFamily = `${customFont}, ${serifStack}`;
+      });
+      
+      // Apply font sizes
+      document.body.style.fontSize = `${baseSize}px`;
+      
+      const heroTagline = document.querySelector('.hero-tagline');
+      heroTagline.style.fontSize = `${baseSize * 1.25}px`;
+      
+      const navLinksSize = document.querySelectorAll('.nav-link');
+      navLinksSize.forEach(link => {
+        link.style.fontSize = `${baseSize * 0.875}px`;
+      });
+      
+      const ctaButtons = document.querySelectorAll('.cta-button, .contact-button');
+      ctaButtons.forEach(btn => {
+        btn.style.fontSize = `${baseSize * 0.875}px`;
+      });
+      
+      const aboutTextSize = document.getElementById('about-text');
+      aboutTextSize.style.fontSize = `${baseSize * 1.125}px`;
+      
+      // Update text content
+      document.getElementById('hero-headline').textContent = config.hero_headline || defaultConfig.hero_headline;
+      document.getElementById('hero-tagline').textContent = config.hero_tagline || defaultConfig.hero_tagline;
+      document.getElementById('hero-cta').textContent = config.hero_cta || defaultConfig.hero_cta;
+      document.getElementById('mens-title').textContent = config.mens_title || defaultConfig.mens_title;
+      document.getElementById('womens-title').textContent = config.womens_title || defaultConfig.womens_title;
+      document.getElementById('about-headline').textContent = config.about_headline || defaultConfig.about_headline;
+      document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+      document.getElementById('contact-headline').textContent = config.contact_headline || defaultConfig.contact_headline;
+      
+      // Update contact information
+      const phoneNumber = config.phone_number || defaultConfig.phone_number;
+      const whatsappNumber = config.whatsapp_number || defaultConfig.whatsapp_number;
+      const emailAddress = config.email_address || defaultConfig.email_address;
+      
+      const phoneDisplays = document.querySelectorAll('#phone-display');
+      phoneDisplays.forEach(el => el.textContent = phoneNumber);
+      
+      const phoneLinks = document.querySelectorAll('#footer-phone, #phone-button');
+      phoneLinks.forEach(link => link.href = `tel:${phoneNumber.replace(/\D/g, '')}`);
+      
+      const whatsappLinks = document.querySelectorAll('#footer-whatsapp, #whatsapp-button');
+      whatsappLinks.forEach(link => link.href = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}`);
+      
+      const emailDisplays = document.querySelectorAll('#email-display');
+      emailDisplays.forEach(el => el.textContent = emailAddress);
+      
+      const emailLinks = document.querySelectorAll('#footer-email, #email-button');
+      emailLinks.forEach(link => link.href = `mailto:${emailAddress}`);
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              config.primary_action_color = value;
+              window.elementSdk.setConfig({ primary_action_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["hero_headline", config.hero_headline || defaultConfig.hero_headline],
+        ["hero_tagline", config.hero_tagline || defaultConfig.hero_tagline],
+        ["hero_cta", config.hero_cta || defaultConfig.hero_cta],
+        ["mens_title", config.mens_title || defaultConfig.mens_title],
+        ["womens_title", config.womens_title || defaultConfig.womens_title],
+        ["about_headline", config.about_headline || defaultConfig.about_headline],
+        ["about_text", config.about_text || defaultConfig.about_text],
+        ["contact_headline", config.contact_headline || defaultConfig.contact_headline],
+        ["phone_number", config.phone_number || defaultConfig.phone_number],
+        ["whatsapp_number", config.whatsapp_number || defaultConfig.whatsapp_number],
+        ["email_address", config.email_address || defaultConfig.email_address]
+      ]);
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b81f55dd7d7c13d',t:'MTc2NzQzNzY3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
